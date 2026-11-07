@@ -112,6 +112,8 @@ by a 15-line loader inside `lib/config.js` — no dotenv dependency.
 | `PORT` | HTTP port (Render injects its own) | `3000` |
 | `SITE_URL` | canonical URL for meta tags, sitemap, emails | `http://localhost:3000` |
 | `ADMIN_PASSWORD` | `/admin` password | `organichy@2026` — **change this** |
+| `ADMIN_SESSION_HOURS` | how long an admin login stays valid | `8` |
+| `ADMIN_LOGIN_ATTEMPTS` | wrong passwords allowed per 5 min per IP | `10` |
 | `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` | live payments | empty ⇒ **demo mode**, nothing is charged |
 | `DATA_DIR` | where the JSON datastore lives | `./data` |
 | `FREE_SHIPPING_THRESHOLD` / `SHIPPING_FEE` / `COD_FEE` | money | `899` / `49` / `29` |
@@ -174,9 +176,18 @@ rules and rounds to whole rupees. There is no second implementation to drift out
 Nothing about an anonymous cart hits the database, and the site is cache-friendly
 because of it. If you swap in Postgres, the cart needs no migration.
 
-**Admin auth.** `POST /api/admin/login` issues a random 48-hex token, stored
-in memory with an 8-hour expiry and mirrored into an `HttpOnly; SameSite=Lax`
-cookie so `/admin` can render server-side. APIs accept `Authorization: Bearer`.
+**Admin auth.** `POST /api/admin/login` issues a random 48-hex token held in
+memory for `ADMIN_SESSION_HOURS` (8) and mirrored into an `HttpOnly; SameSite=Lax`
+cookie so `/admin` can render server-side. The same token is also accepted as
+`Authorization: Bearer` **and** as `?token=` — because iframes, previews and
+hardened browsers drop cookies, and "the password is right but it keeps showing
+the login page" is what that looks like from the inside. Login returns
+`redirect: "/admin?token=…"`; the client adopts it into `sessionStorage`, cleans the
+URL, re-plants the cookie through `POST /api/admin/session`, and re-attaches the
+token to CSV links. `bearer()` deliberately does not read `req.body`, so
+`/api/admin/login` can never authenticate itself. The limiter counts *wrong*
+passwords only (`ADMIN_LOGIN_ATTEMPTS`, 10 per 5 min) and says how many are left,
+so refreshing the login page never burns your own budget.
 SameSite=Lax is what stops a cross-site `<form>` from riding the cookie, and
 `/api/admin/orders.csv?token=…` exists so a cron job can pull a nightly export.
 

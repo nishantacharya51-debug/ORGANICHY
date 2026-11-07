@@ -168,6 +168,27 @@ async function parseJson(req) {
   }
 }
 
+function attempts(key) {
+  const b = buckets.get(key);
+  if (!b) return 0;
+  if (Date.now() > b.reset) {
+    buckets.delete(key);
+    return 0;
+  }
+  return b.n;
+}
+
+function strike(key, windowMs = 300000) {
+  const b = buckets.get(key);
+  if (!b || Date.now() > b.reset) buckets.set(key, { n: 1, reset: Date.now() + windowMs });
+  else b.n += 1;
+  return buckets.get(key).n;
+}
+
+function clearStrikes(key) {
+  buckets.delete(key);
+}
+
 function clientIp(req) {
   const fwd = req.headers['x-forwarded-for'];
   if (fwd) return String(fwd).split(',')[0].trim();
@@ -175,6 +196,10 @@ function clientIp(req) {
 }
 
 /* Naive fixed-window limiter — no Redis needed at this traffic level. */
+// Two shapes on purpose: limited() counts *every* call (fine for cart/contact
+// spam), while attempts()/strike() count only failures — used for the admin
+// password, so a client who logs in successfully 40 times a day is never locked
+// out of their own console.
 const buckets = new Map();
 function limited(key, max, windowMs = 60000) {
   const now = Date.now();
@@ -204,16 +229,24 @@ function issueToken() {
   return token;
 }
 
-function bearer(req) {
+/**
+ * Token sources, in order: Authorization: Bearer → oh_admin cookie → ?token=
+ * The query form exists because previews, iframes and hardened browsers often
+ * refuse a first-party cookie that was set from an embedded frame — without it
+ * the admin can log in correctly and still be shown the login card forever.
+ */
+function bearer(req, url) {
   const h = String(req.headers.authorization || '');
   if (h.toLowerCase().startsWith('bearer ')) return h.slice(7).trim();
   const cookie = String(req.headers.cookie || '');
   const m = cookie.match(/(?:^|;\s*)oh_admin=([a-f0-9]{16,})/);
-  return m ? m[1] : '';
+  if (m) return m[1];
+  const q = String((url && url.searchParams.get('token')) || '').trim();
+  return /^[a-f0-9]{16,128}$/.test(q) ? q : '';
 }
 
-function isAuthed(req) {
-  const token = bearer(req);
+function isAuthed(req, url) {
+  const token = bearer(req, url);
   if (!token) return false;
   const exp = adminTokens.get(token);
   if (!exp) return false;
@@ -297,8 +330,13 @@ function handlePage(req, res, url) {
   if (ROUTES.policies.includes(p)) return sendHtml(res, viewsContent.policyPage(key));
 
   if (p === '/admin') {
-    if (!isAuthed(req)) return sendHtml(res, viewsAdmin.loginPage());
-    return sendHtml(res, viewsAdmin.adminPage());
+    if (!isAuthed(req, url)) return sendHtml(res, viewsAdmin.loginPage());
+    // A token that came in on the query gets planted as a cookie too, so the
+    // next navigation is clean. Browsers that block the cookie simply keep
+    // using the URL form — both paths are supported.
+    const fromQuery = String(url.searchParams.get('token') || '').trim();
+    const extra = fromQuery ? { 'Set-Cookie': authCookie(fromQuery) } : {};
+    return sendHtml(res, viewsAdmin.adminPage(), 200, extra);
   }
   if (p === '/admin/login') return redirect(res, '/admin', 302);
 
@@ -712,47 +750,72 @@ api['POST /api/payment/verify'] = async (req, res) => {
 /* 4. Admin API                                                      */
 /* ================================================================== */
 
-api['POST /api/admin/login'] = async (req, res) => {
+api['POST /api/admin/login'] = async (req, res, url) => {
   const ip = clientIp(req);
-  if (limited(`login:${ip}`, 10, 300000)) {
-    const msg = 'Too many password attempts. Locked for 5 minutes.';
-    if (wantsHtml(req)) return sendHtml(res, viewsAdmin.loginPage({ error: msg }), 429);
-    return sendJson(res, { ok: false, error: msg }, 429);
+  const key = `login:${ip}`;
+  const max = config.admin.loginAttempts;
+  const used = attempts(key);
+  if (used >= max) {
+    const secs = Math.max(1, Math.ceil(((buckets.get(key).reset - Date.now()) / 1000)));
+    const msg = `Too many wrong passwords from this address. Try again in ${secs}s.`;
+    if (wantsHtml(req, url)) return sendHtml(res, viewsAdmin.loginPage({ error: msg, locked: true }), 429);
+    return sendJson(res, { ok: false, error: msg, retryInSeconds: secs }, 429);
   }
   const body = await parseJson(req);
-  const password = String(body.password || '');
+  const password = String(body.password == null ? '' : body.password);
   if (!safeCompare(password, config.admin.password)) {
+    const n = strike(key);
     // eslint-disable-next-line no-console
-    console.warn(`[admin] failed login from ${ip}`);
-    if (wantsHtml(req)) return sendHtml(res, viewsAdmin.loginPage({ error: 'Wrong password.' }), 401);
-    return sendJson(res, { ok: false, error: 'Wrong password.' }, 401);
+    console.warn(`[admin] failed login from ${ip} (${n}/${max})`);
+    const left = Math.max(0, max - n);
+    const err = `Wrong password. ${left} attempt${left === 1 ? '' : 's'} left before a 5-minute pause.`;
+    if (wantsHtml(req, url)) return sendHtml(res, viewsAdmin.loginPage({ error: err }), 401);
+    return sendJson(res, { ok: false, error: err, attemptsLeft: left }, 401);
   }
+  clearStrikes(key);
   const token = issueToken();
   const headers = { 'Set-Cookie': authCookie(token) };
-  if (wantsHtml(req)) return redirect(res, '/admin', 303, headers);
-  return sendJson(res, { ok: true, token, expiresInSeconds: config.admin.sessionHours * 3600 }, 200, headers);
+  const payload = {
+    ok: true,
+    token,
+    redirect: `/admin?token=${token}`,
+    expiresInSeconds: config.admin.sessionHours * 3600,
+  };
+  if (wantsHtml(req, url)) return redirect(res, payload.redirect, 303, headers);
+  return sendJson(res, payload, 200, headers);
 };
 
-function wantsHtml(req) {
+/** Re-plant the session cookie from a Bearer token (used after a reload). */
+api['POST /api/admin/session'] = async (req, res, url) => {
+  if (!isAuthed(req, url)) return sendJson(res, { ok: false, error: 'invalid session' }, 401);
+  const token = bearer(req, url);
+  return sendJson(res, { ok: true, token, expiresInSeconds: config.admin.sessionHours * 3600 }, 200, {
+    'Set-Cookie': authCookie(token),
+  });
+};
+
+function wantsHtml(req, url) {
+  const accept = String(req.headers.accept || '');
+  if (String((url && url.searchParams.get('format')) || '') === 'json') return false;
+  if (accept.includes('application/json')) return false;
   const ct = String(req.headers['content-type'] || '');
-  if (ct.includes('application/x-www-form-urlencoded') && !String(req.headers.accept || '').includes('application/json')) return true;
-  return false;
+  return ct.includes('application/x-www-form-urlencoded') || ct.includes('multipart/form-data') || accept.includes('text/html');
 }
 
-api['POST /api/admin/logout'] = async (req, res) => {
-  const token = bearer(req);
+api['POST /api/admin/logout'] = async (req, res, url) => {
+  const token = bearer(req, url);
   if (token) adminTokens.delete(token);
   return sendJson(res, { ok: true }, 200, { 'Set-Cookie': 'oh_admin=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax' });
 };
 
-function requireAdmin(req, res) {
-  if (isAuthed(req)) return true;
+function requireAdmin(req, res, url) {
+  if (isAuthed(req, url)) return true;
   sendJson(res, { ok: false, error: 'Admin session expired — sign in again at /admin.' }, 401);
   return false;
 }
 
-api['GET /api/admin/state'] = async (req, res) => {
-  if (!requireAdmin(req, res)) return;
+api['GET /api/admin/state'] = async (req, res, url) => {
+  if (!requireAdmin(req, res, url)) return;
   const products = db.listProducts();
   return sendJson(res, {
     ok: true,
@@ -776,7 +839,7 @@ api['GET /api/admin/state'] = async (req, res) => {
 };
 
 api['POST /api/admin/orders/:id/status'] = async (req, res, url) => {
-  if (!requireAdmin(req, res)) return;
+  if (!requireAdmin(req, res, url)) return;
   const id = decodeURIComponent(url.pathname.split('/').slice(-2)[0]);
   const body = await parseJson(req);
   const order = db.getOrder(id);
@@ -816,7 +879,7 @@ function defaultNote(status, order) {
 }
 
 api['POST /api/admin/products/:id'] = async (req, res, url) => {
-  if (!requireAdmin(req, res)) return;
+  if (!requireAdmin(req, res, url)) return;
   const id = decodeURIComponent(url.pathname.split('/').slice(-1)[0]);
   const body = await parseJson(req);
   const product = db.getProduct(id);
@@ -843,8 +906,8 @@ api['POST /api/admin/products/:id'] = async (req, res, url) => {
   return sendJson(res, { ok: true, product: db.getProduct(product.id) });
 };
 
-api['POST /api/admin/products'] = async (req, res) => {
-  if (!requireAdmin(req, res)) return;
+api['POST /api/admin/products'] = async (req, res, url) => {
+  if (!requireAdmin(req, res, url)) return;
   const body = await parseJson(req);
   const name = cleanStr(body.name, 90);
   if (name.length < 4) return sendJson(res, { ok: false, error: 'Give the product a name.' }, 422);
@@ -887,8 +950,8 @@ api['POST /api/admin/products'] = async (req, res) => {
   return sendJson(res, { ok: true, product: db.getProduct(slug) }, 201);
 };
 
-api['POST /api/admin/coupons'] = async (req, res) => {
-  if (!requireAdmin(req, res)) return;
+api['POST /api/admin/coupons'] = async (req, res, url) => {
+  if (!requireAdmin(req, res, url)) return;
   const body = await parseJson(req);
   const code = cleanStr(body.code, 24).toUpperCase().replace(/[^A-Z0-9_-]/g, '');
   if (code.length < 3) return sendJson(res, { ok: false, error: 'Code needs at least 3 characters (A–Z, 0–9).' }, 422);
@@ -915,18 +978,15 @@ api['POST /api/admin/coupons'] = async (req, res) => {
 };
 
 api['POST /api/admin/messages/:id/read'] = async (req, res, url) => {
-  if (!requireAdmin(req, res)) return;
+  if (!requireAdmin(req, res, url)) return;
   const id = decodeURIComponent(url.pathname.split('/').slice(-2)[0]);
   db.markMessageRead(id);
   return sendJson(res, { ok: true });
 };
 
-api['GET /api/admin/orders.csv'] = async (req, res) => {
-  if (!isAuthed(req)) {
-    // Allow ?token= for curl/backup jobs where headers are awkward.
-    const t = cleanStr(new URL(req.url, 'http://x').searchParams.get('token'), 80);
-    if (!t || !adminTokens.get(t) || adminTokens.get(t) < Date.now()) return sendJson(res, { ok: false, error: 'admin session required' }, 401);
-  }
+api['GET /api/admin/orders.csv'] = async (req, res, url) => {
+  // isAuthed() already understands ?token=, which is what a curl backup job passes.
+  if (!isAuthed(req, url)) return sendJson(res, { ok: false, error: 'admin session required' }, 401);
   const rows = db.listOrders().map((o) => ({
     id: o.id,
     placed: String(o.createdAt).slice(0, 16).replace('T', ' '),
@@ -959,8 +1019,8 @@ api['GET /api/admin/orders.csv'] = async (req, res) => {
   });
 };
 
-api['GET /api/admin/subscribers.csv'] = async (req, res) => {
-  if (!isAuthed(req)) return sendJson(res, { ok: false, error: 'admin session required' }, 401);
+api['GET /api/admin/subscribers.csv'] = async (req, res, url) => {
+  if (!isAuthed(req, url)) return sendJson(res, { ok: false, error: 'admin session required' }, 401);
   const rows = db.listSubscribers().map((s) => ({ email: s.email, source: s.source || '', joined: String(s.createdAt).slice(0, 10) }));
   return send(res, 200, `\uFEFF${toCsv(rows)}`, {
     'Content-Type': 'text/csv; charset=utf-8',

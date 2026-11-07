@@ -57,7 +57,14 @@ function ok(name, cond, extra = '') {
 const get = async (p, opts = {}) => {
   const res = await fetch(BASE + p, opts);
   const text = await res.text();
-  return { status: res.status, text, headers: res.headers, json: () => JSON.parse(text) };
+  return {
+    status: res.status,
+    text,
+    headers: res.headers,
+    url: res.url,
+    redirected: res.redirected,
+    json: () => JSON.parse(text),
+  };
 };
 
 async function waitForServer(tries = 60) {
@@ -177,6 +184,70 @@ async function main() {
     });
     ok('wrong password rejected', badLogin.status === 401);
     const auth = { Authorization: `Bearer ${login.token}` };
+    /* The console has to open for a browser that refuses to keep a cookie —
+       previews, iframes and hardened profiles drop it, and "my password is
+       correct but it keeps showing the login page" is the bug that causes. */
+    ok('login hands back a token URL for cookie-less browsers', login.redirect === `/admin?token=${login.token}`);
+    const tokenPage = await get(`/admin?token=${login.token}`);
+    ok(
+      'token URL renders all six panels without a cookie',
+      tokenPage.status === 200 &&
+        tokenPage.text.includes('data-admin') &&
+        (tokenPage.text.match(/adm__panel/g) || []).length === 6 &&
+        !tokenPage.text.includes('data-admin-login')
+    );
+    const junk = await get('/admin?token=deadbeef');
+    ok('a junk token gets the login card, never the console', junk.status === 200 && junk.text.includes('data-admin-login'));
+    const replant = await get('/api/admin/session', {
+      method: 'POST',
+      headers: { ...auth, 'Content-Type': 'application/json' },
+      body: '{}',
+    }).then((r) => r.json());
+    ok('session endpoint re-plants the cookie from a bearer token', replant.ok === true && replant.expiresInSeconds > 0);
+    const csvNoCookie = await get(`/api/admin/orders.csv?token=${login.token}`);
+    ok(
+      'CSV download works with only a URL token',
+      csvNoCookie.status === 200 && (csvNoCookie.headers.get('content-type') || '').includes('text/csv')
+    );
+    const formLogin = await get('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'text/html' },
+      body: `password=${encodeURIComponent(process.env.ADMIN_PASSWORD || 'organichy@2026')}`,
+    });
+    ok(
+      'no-JS form login ends up on the token-protected console',
+      formLogin.status === 200 &&
+        formLogin.redirected &&
+        /\/admin\?token=/.test(formLogin.url) &&
+        formLogin.text.includes('adm__panel')
+    );
+    /* Correct password must never be punished: 12 good logins in a row = 12 tokens. */
+    let goodRuns = 0;
+    for (let i = 0; i < 12; i += 1) {
+      const again = await get('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ password: process.env.ADMIN_PASSWORD || 'organichy@2026' }),
+      });
+      if (again.status === 200) goodRuns += 1;
+    }
+    ok('12 successful logins in a row are never rate limited', goodRuns === 12);
+    let firstErr = '';
+    for (let i = 0; i < 10; i += 1) {
+      const wrong = await get('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ password: `wrong${i}` }),
+      });
+      if (!firstErr && wrong.status === 401) firstErr = JSON.parse(wrong.text).error || '';
+    }
+    const locked = await get('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ password: process.env.ADMIN_PASSWORD || 'organichy@2026' }),
+    });
+    ok('ten wrong passwords say how many are left', /attempts left/.test(firstErr));
+    ok('the lock is explained, not blamed on the password', locked.status === 429 && /Too many wrong passwords/.test(locked.text));
     const state = await get('/api/admin/state', { headers: auth }).then((r) => r.json());
     ok('state exposes orders + products + stats', state.ok && Array.isArray(state.orders) && state.orders.length >= 1 && state.stats.revenue > 0, `${state.orders.length} orders, ₹${state.stats.revenue}`);
     const moved = await get(`/api/admin/orders/${created.orderId}/status`, {

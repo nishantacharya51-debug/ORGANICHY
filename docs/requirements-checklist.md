@@ -94,7 +94,7 @@ GA4 later it is a `<script>` in `layout.js` plus a CSP exception (and a privacy-
 |---|---|
 | Mobile responsive (390 / 768 / 1440) | built, one breakpoint set in `main.css` §17 |
 | SEO: meta, OG, canonical, JSON-LD, sitemap, robots | built (`baseSchema`, per-page `schema`, `/sitemap.xml`, `/robots.txt`) |
-| Security headers, rate limiting, validation | built (CSP `script-src 'self'`, XFO DENY, per-IP limiter on login/orders/contact/reviews, server-side validation in `pricing.validateCustomer`) |
+| Security headers, rate limiting, validation | built (CSP `script-src 'self'`, XFO DENY, per-IP limiter on orders/contact/reviews and on *wrong* admin passwords (a correct one is never punished); `/admin` works cookie-less via `?token=`, server-side validation in `pricing.validateCustomer`) |
 | Performance | one CSS file, three JS files, no fonts loaded over the network, images quantised to 320–760 KB, ~15 ms cold page render |
 | `prefers-reduced-motion` | honoured — every animation is gated |
 | Accessibility | skip link, labelled fields, `aria-expanded` on accordions/drawer, focus-visible rings, semantic landmarks, alt text on product imagery |

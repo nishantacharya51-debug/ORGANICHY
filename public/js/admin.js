@@ -4,26 +4,35 @@
    Progressive enhancement over the server-rendered console: tab switching,
    order search + status filters, status/AWB updates, inline stock edits,
    product + coupon creation, and the login form. Talks to /api/admin/*.
+
+   Session handling: the cookie is the normal path, but a token on ?token= is
+   accepted too (see lib/../server.js bearer()). Previews, iframes and hardened
+   browsers frequently drop the cookie — without the URL fallback you can type
+   the right password forever and keep being shown the login card.
    ========================================================================== */
 (function () {
   const TOKEN_KEY = 'organichy.admin.token';
+  const RETRY_KEY = 'organichy.admin.retry';
+  const HEX = /^[a-f0-9]{16,128}$/;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.prototype.slice.call((r || document).querySelectorAll(s));
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   const token = () => sessionStorage.getItem(TOKEN_KEY) || '';
+  const setToken = (t) => (t ? sessionStorage.setItem(TOKEN_KEY, t) : sessionStorage.removeItem(TOKEN_KEY));
+
   async function api(path, opts = {}) {
+    const headers = Object.assign({}, opts.headers || {});
+    if (opts.body) headers['Content-Type'] = 'application/json';
+    if (token()) headers.Authorization = `Bearer ${token()}`;
     const res = await fetch(path, {
       method: opts.method || 'GET',
-      headers: Object.assign(
-        opts.body ? { 'Content-Type': 'application/json' } : {},
-        token() ? { Authorization: `Bearer ${token()}` } : {}
-      ),
+      headers,
       body: opts.body ? JSON.stringify(opts.body) : undefined,
       credentials: 'same-origin',
     });
     if (res.status === 401) {
-      sessionStorage.removeItem(TOKEN_KEY);
+      setToken('');
       location.href = '/admin';
       throw new Error('session expired');
     }
@@ -50,6 +59,63 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* Session bootstrap                                                   */
+  /* ------------------------------------------------------------------ */
+  const fromUrl = String(new URLSearchParams(location.search).get('token') || '').trim();
+  if (HEX.test(fromUrl)) setToken(fromUrl);
+  const tk = token();
+  const hasConsole = Boolean($('[data-admin]'));
+
+  if (hasConsole) {
+    sessionStorage.removeItem(RETRY_KEY);
+    if (fromUrl) {
+      try {
+        history.replaceState(null, '', location.pathname + location.hash);
+      } catch {}
+    }
+    if (tk) {
+      // <a> downloads (CSV) cannot carry an Authorization header
+      $$('a[href^="/api/admin/"]').forEach((a) => {
+        try {
+          const u = new URL(a.href, location.href);
+          if (!u.searchParams.get('token')) {
+            u.searchParams.set('token', tk);
+            a.href = u.pathname + u.search;
+          }
+        } catch {}
+      });
+    }
+  } else if (tk && !sessionStorage.getItem(RETRY_KEY)) {
+    // We hold a token but the server did not accept the session: the cookie was
+    // dropped. Ask for it to be re-planted, then ride the URL form once.
+    sessionStorage.setItem(RETRY_KEY, '1');
+    fetch('/api/admin/session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${tk}` },
+      body: '{}',
+      credentials: 'include',
+    })
+      .then((r) => (r.ok ? r.json() : { ok: false }))
+      .then((d) => {
+        if (d && d.ok) location.href = `/admin?token=${tk}`;
+        else {
+          setToken('');
+          location.href = '/admin';
+        }
+      })
+      .catch(() => sessionStorage.removeItem(RETRY_KEY));
+  } else if (tk) {
+    // second failure back to back — stop, explain, and hand over the link
+    sessionStorage.removeItem(RETRY_KEY);
+    const box = $('[data-admin-recover]');
+    if (box) {
+      box.hidden = false;
+      box.innerHTML =
+        `<p class="login__note">${esc('This browser is not keeping the session cookie (common inside a preview frame or with cookies blocked). Sign in again — the console will open with a token link instead.')} <a href="/admin?token=${esc(tk)}">Try the last token again</a></p>`;
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Login                                                              */
   /* ------------------------------------------------------------------ */
   const loginForm = $('[data-admin-login]');
@@ -63,27 +129,35 @@
         btn.textContent = 'Checking…';
       }
       try {
-        const data = await fetch('/api/admin/login', {
+        const res = await fetch('/api/admin/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({ password: pw.value }),
-        }).then((r) => r.json());
+          credentials: 'include',
+        });
+        const data = await res.json().catch(() => ({ ok: false }));
         if (data.ok && data.token) {
-          sessionStorage.setItem(TOKEN_KEY, data.token);
-          location.href = '/admin';
+          setToken(data.token);
+          sessionStorage.removeItem(RETRY_KEY);
+          location.href = data.redirect || '/admin';
         } else {
           flash(data.error || 'Wrong password', 'err');
           if (pw) {
             pw.classList.add('is-bad');
             pw.select();
           }
+          if (res.status === 429 && btn) btn.disabled = true;
         }
       } catch (err) {
         flash('Could not reach the server', 'err');
       } finally {
-        if (btn) {
-          btn.disabled = false;
+        if (btn && !btn.disabled) {
           btn.textContent = 'Open the console';
+        } else if (btn) {
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.textContent = 'Open the console';
+          }, 4000);
         }
       }
     });
@@ -95,10 +169,6 @@
   const admin = $('[data-admin]');
   if (!admin) return;
 
-  // grab the token if the page was loaded after a redirect-based login
-  const fromUrl = new URL(location.href).searchParams.get('token');
-  if (fromUrl) sessionStorage.setItem(TOKEN_KEY, fromUrl);
-
   function setTab(name) {
     $$('.adm__tab').forEach((b) => b.classList.toggle('is-active', b.dataset.tab === name));
     $$('.adm__panel').forEach((p) => p.classList.toggle('is-active', p.dataset.panel === name));
@@ -107,6 +177,7 @@
     if (title) title.textContent = label.trim();
     location.hash = name;
   }
+
   admin.addEventListener('click', (e) => {
     const tab = e.target.closest('[data-tab]');
     if (tab && tab.classList.contains('adm__tab')) {
@@ -121,22 +192,26 @@
       return;
     }
     if (e.target.closest('[data-admin-refresh]')) {
-      location.reload();
+      const t = token();
+      location.href = location.pathname + (t ? `?token=${t}` : '') + location.hash;
       return;
     }
     if (e.target.closest('[data-admin-logout]')) {
-      api('/api/admin/logout', { method: 'POST' }).then(() => {
-        sessionStorage.removeItem(TOKEN_KEY);
-        location.href = '/admin';
-      });
+      api('/api/admin/logout', { method: 'POST' })
+        .catch(() => {})
+        .then(() => {
+          setToken('');
+          sessionStorage.removeItem(RETRY_KEY);
+          location.href = '/admin';
+        });
       return;
     }
-    const read1 = e.target.closest('[data-read-message]');
-    if (read1) {
-      api(`/api/admin/messages/${encodeURIComponent(read1.dataset.readMessage)}/read`, { method: 'POST' }).then(() => {
-        const msg = read1.closest('.msg');
+    const readBtn = e.target.closest('[data-read-message]');
+    if (readBtn) {
+      api(`/api/admin/messages/${encodeURIComponent(readBtn.dataset.readMessage)}/read`, { method: 'POST' }).then(() => {
+        const msg = readBtn.closest('.msg');
         if (msg) msg.classList.remove('is-new');
-        read1.remove();
+        readBtn.remove();
         flash('Marked as read');
       });
       return;
@@ -152,8 +227,10 @@
 
   /* ------------------------------------------------------ order table --- */
   function filterOrders() {
-    const status = ($('[data-filter-status].is-active') || {}).dataset ? $('[data-filter-status].is-active').dataset.filterStatus : 'all';
-    const q = ($('[data-order-search]') || {}).value ? $('[data-order-search]').value.trim().toLowerCase() : '';
+    const activeChip = $('[data-filter-status].is-active');
+    const status = activeChip ? activeChip.dataset.filterStatus : 'all';
+    const searchEl = $('[data-order-search]');
+    const q = searchEl ? searchEl.value.trim().toLowerCase() : '';
     let shown = 0;
     $$('[data-orders-table] tbody tr').forEach((tr) => {
       const okStatus = status === 'all' || tr.dataset.status === status;
@@ -162,8 +239,7 @@
       tr.hidden = !on;
       if (on) shown += 1;
     });
-    const label = $('.adm__panel[data-panel="orders"] .muted');
-    if (label && q) flash(`${shown} order${shown === 1 ? '' : 's'} match`);
+    if (q) flash(`${shown} order${shown === 1 ? '' : 's'} match`);
   }
   const search = $('[data-order-search]');
   if (search) search.addEventListener('input', () => filterOrders());
@@ -183,7 +259,6 @@
           pill.className = `pill pill--${res.order.status}`;
         }
         tr.dataset.status = res.order.status;
-        const awbCell = tr.querySelector('.rowform input[name="awb"]');
         flash(`Order ${id} → ${res.order.status}. Customer notified.`);
         if (body.awb) {
           const cell = tr.children[6];
@@ -195,8 +270,7 @@
     const newP = e.target.closest('[data-new-product]');
     if (newP) {
       e.preventDefault();
-      const body = Object.fromEntries(new FormData(newP).entries());
-      const res = await api('/api/admin/products', { method: 'POST', body });
+      const res = await api('/api/admin/products', { method: 'POST', body: Object.fromEntries(new FormData(newP).entries()) });
       formMsg(newP, res);
       if (res.ok) setTimeout(() => location.reload(), 700);
       return;
@@ -204,8 +278,7 @@
     const newC = e.target.closest('[data-new-coupon]');
     if (newC) {
       e.preventDefault();
-      const body = Object.fromEntries(new FormData(newC).entries());
-      const res = await api('/api/admin/coupons', { method: 'POST', body });
+      const res = await api('/api/admin/coupons', { method: 'POST', body: Object.fromEntries(new FormData(newC).entries()) });
       formMsg(newC, res);
       if (res.ok) setTimeout(() => location.reload(), 700);
     }
@@ -248,13 +321,17 @@
     cb.addEventListener('change', () => saveProduct(cb.dataset.product))
   );
 
-  /* keep the price × MRP row tidy while typing */
-  admin.addEventListener('blur', (e) => {
-    const input = e.target.closest('[data-field="price"], [data-field="mrp"], [data-field="stock"]');
-    if (!input) return;
-    const v = Math.max(input.dataset.field === 'stock' ? 0 : 1, Number(input.value) || 0);
-    input.value = String(v);
-  }, true);
+  /* keep prices sane while typing */
+  admin.addEventListener(
+    'blur',
+    (e) => {
+      const input = e.target.closest('[data-field="price"], [data-field="mrp"], [data-field="stock"]');
+      if (!input) return;
+      const v = Math.max(input.dataset.field === 'stock' ? 0 : 1, Number(input.value) || 0);
+      input.value = String(v);
+    },
+    true
+  );
 
   /* deep-link to a tab: /admin#orders */
   const initial = (location.hash || '#overview').slice(1);

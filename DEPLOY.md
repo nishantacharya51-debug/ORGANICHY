@@ -196,6 +196,24 @@ copy the order ID → track it at `/account` with the phone number → change th
 status to *shipped* in `/admin` and confirm the timeline and AWB appear on the
 customer page. On mobile, check 390px (sticky buy bar, drawer), 768px and 1440px.
 
+### If `/admin` keeps showing the login card
+
+The password is usually right — the browser refused to keep the `oh_admin` cookie
+(embedded preview, cookie blocking, `SameSite` hardening). The console then rides the
+token instead: a successful login hands back `redirect: "/admin?token=…"` and that URL
+needs no cookie at all. From a shell:
+
+```bash
+T=$(curl -s -X POST $BASE/api/admin/login -H 'content-type: application/json' \
+    -H 'accept: application/json' -d '{"password":"…"}' | sed -n 's/.*"token":"\([a-f0-9]*\)".*/\1/p')
+curl -s "$BASE/admin?token=$T" | grep -c adm__panel        # → 6 panels
+curl -s "$BASE/api/admin/orders.csv?token=$T" | head -2    # export without a cookie jar
+```
+
+Only *wrong* passwords are rate limited (`ADMIN_LOGIN_ATTEMPTS`, 10 per 5 minutes) and
+the card counts them down, so a correct password can never lock the owner out.
+`ADMIN_SESSION_HOURS` sets how long a login stays valid.
+
 ---
 
 ## 6. Razorpay, live
