@@ -381,7 +381,12 @@ api['GET /api/health'] = async (req, res) => {
     node: process.version,
     uptimeSec: Math.round((Date.now() - startedAt) / 1000),
     time: new Date().toISOString(),
-    db: { products: products.length, orders: db.listOrders().length, reviews: db.reviewsFor(products[0] ? products[0].id : '').length },
+    db: {
+      products: products.length,
+      orders: db.listOrders().length,
+      reviews: db.read('reviews').length,
+      coupons: db.listCoupons().filter((c) => c.active !== false).length,
+    },
     payments: config.payments.mode,
     seed: config.seedVersion,
   });
