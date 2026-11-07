@@ -6,7 +6,7 @@ Deliverables live in `out/`:
 
 | file | what it is |
 |---|---|
-| `gk360_full.mp4` | main video — 12 chapters × 30 facts = **360 distinct scenes**, 1080×1920 (9:16), 24 fps, ~32 min |
+| `gk360_main.mp4` | main video — 12 chapters × 30 facts = **360 distinct scenes**, 1080×1920 (9:16), 3 s per fact, **18:26** |
 | `gk360_teaser.mp4` | 40-second **360° panorama sweep** teaser (camera spins a full 360° through a 12-theme world) |
 | `cover.jpg` | thumbnail / cover art |
 
