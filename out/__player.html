@@ -1,45 +1,65 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GK 360 — videos</title>
+<title>GK 360 — videos &amp; reels</title>
 <style>
  :root{color-scheme:dark}
- body{margin:0;background:#080a12;color:#fff;font-family:system-ui,-apple-system,"Noto Sans",sans-serif;display:flex;flex-direction:column;align-items:center}
- h1{font-size:19px;font-weight:700;letter-spacing:.02em;margin:22px 0 4px}
- p.sub{margin:0 0 16px;color:#8b93a7;font-size:13px}
- .wrap{width:min(96vw,430px);display:flex;flex-direction:column;gap:14px;padding-bottom:34px}
+ *{box-sizing:border-box}
+ body{margin:0;background:#07090f;color:#fff;font-family:system-ui,-apple-system,"Noto Sans",sans-serif}
+ h1{font-size:20px;font-weight:800;margin:24px 0 2px;text-align:center}
+ .sub{color:#8b93a7;font-size:12.5px;text-align:center;margin-bottom:18px}
+ .wrap{width:min(96vw,460px);margin:0 auto 40px;display:flex;flex-direction:column;gap:14px}
  .tabs{display:flex;gap:8px}
- .tab{flex:1;padding:10px 12px;border-radius:999px;border:1px solid #232a3d;background:#111624;color:#c9d0e0;font-size:13px;cursor:pointer}
+ .tab{flex:1;padding:11px;border-radius:999px;border:1px solid #232a3d;background:#111624;color:#c9d0e0;
+      font-size:12.5px;cursor:pointer;text-align:center}
  .tab.on{background:#1b2440;border-color:#4b6bff;color:#fff}
  video{width:100%;border-radius:16px;background:#000;box-shadow:0 12px 40px rgba(0,0,0,.6)}
- .meta{font-size:12px;color:#8b93a7;display:flex;justify-content:space-between;gap:10px}
+ .meta{font-size:11.5px;color:#8b93a7;display:flex;justify-content:space-between;gap:10px}
  .dl{display:block;text-align:center;padding:15px;border-radius:14px;background:#3d59ff;color:#fff;
      font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(61,89,255,.35)}
- .dl:active{transform:translateY(1px)}
- .row{display:flex;gap:10px}
- .dl2{flex:1;text-align:center;padding:12px 8px;border-radius:12px;border:1px solid #2b3450;background:#121728;
-      color:#c9d0e0;font-size:12px;font-weight:600;text-decoration:none}
- a{color:#7d97ff;font-size:12px;text-decoration:none}
+ h2{font-size:14px;margin:8px 0 -4px;color:#cfd6e6}
+ .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ .card{background:#0f1420;border:1px solid #1d2436;border-radius:14px;overflow:hidden;text-decoration:none;color:#fff}
+ .card img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;background:#111}
+ .card b{display:block;font-size:12px;padding:8px 9px 2px}
+ .card span{display:block;font-size:10.5px;color:#8b93a7;padding:0 9px 9px}
 </style></head><body>
 <h1>GK 360 · नेपाली + English</h1>
-<p class="sub">360 scenes · 12 chapters · 1080×1920</p>
+<div class="sub">360 facts · 12 chapters · reels 1:32 each</div>
 <div class="wrap">
-  <div class="tabs"><div class="tab on" data-src="gk360_web.mp4">Main · 18:26</div>
-  <div class="tab" data-src="gk360_teaser.mp4">360° teaser · 40s</div></div>
+  <div class="tabs">
+    <div class="tab on" data-src="gk360_web.mp4" data-name="gk360_main_720p.mp4">Main · 18:26</div>
+    <div class="tab" data-src="gk360_teaser.mp4" data-name="gk360_teaser_360.mp4">360° teaser · 40s</div>
+  </div>
   <video id="v" controls playsinline preload="metadata" poster="cover.jpg" src="gk360_web.mp4"></video>
   <div class="meta"><span id="m">main video · 720p web</span><span id="sz">16 MB</span></div>
-  <a class="dl" id="dl" href="gk360_web.mp4" download="gk360_main_720p.mp4">⬇ Download this video (720p · 16 MB)</a>
-  <div class="row">
-    <a class="dl2" href="gk360_main.mp4" download="gk360_main_1080p.mp4">Full HD 1080p · 82 MB</a>
-    <a class="dl2" href="gk360_teaser.mp4" download="gk360_teaser_360.mp4">360° teaser · 12 MB</a>
-  </div>
+  <a class="dl" id="dl" href="gk360_web.mp4" download="gk360_main_720p.mp4">⬇ Download this video</a>
   <div class="meta"><span>iPhone/Mac: long-press or right-click → Save video</span></div>
+
+  <h2>Instagram Reels · 12 chapters (1:32 each)</h2>
+  <div class="grid" id="grid"></div>
+  <a class="dl" href="reels_zip" download="gk360_reels.zip">⬇ Download all 12 reels (zip)</a>
 </div>
 <script>
- const v=document.getElementById('v'), m=document.getElementById('m');
- document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
-   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
-   t.classList.add('on'); v.src=t.dataset.src; m.textContent=t.textContent; v.play();
-   document.getElementById('dl').href=t.dataset.src;
-   document.getElementById('sz').textContent = t.dataset.src.includes('teaser') ? '12 MB' : '16 MB';
- });
+const REELS=[["R01_space","अन्तरिक्ष","SPACE"],["R02_science","विज्ञान","SCIENCE"],
+["R03_earth","पृथ्वी","EARTH"],["R04_animals","जनावर","ANIMALS"],
+["R05_body","मानव शरीर","BODY"],["R06_history","इतिहास","HISTORY"],
+["R07_tech","प्रविधि","TECH"],["R08_nepal","नेपाल","NEPAL"],
+["R09_arts","कला","ARTS"],["R10_sports","खेलकुद","SPORTS"],
+["R11_food","खाना","FOOD"],["R12_money","अर्थ","MONEY"]];
+const grid=document.getElementById('grid');
+REELS.forEach(([slug,ne,en])=>{
+  const a=document.createElement('a'); a.className='card'; a.href='reels/'+slug+'.mp4'; a.download=slug+'.mp4';
+  a.innerHTML=`<video src="reels/${slug}.mp4#t=2" preload="metadata" muted playsinline></video>
+   <b>${ne}</b><span>${en} · 1:32 · download</span>`;
+  a.querySelector('video').style.cssText='width:100%;display:block;aspect-ratio:9/16;object-fit:cover;background:#111';
+  a.onclick=e=>{ if(!e.target.download){ e.preventDefault(); v.src='reels/'+slug+'.mp4'; v.play(); window.scrollTo({top:0,behavior:'smooth'}); document.getElementById('dl').href='reels/'+slug+'.mp4'; document.getElementById('m').textContent=ne+' reel'; }} ;
+  grid.appendChild(a);
+});
+const v=document.getElementById('v'), m=document.getElementById('m'), dl=document.getElementById('dl'), sz=document.getElementById('sz');
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on'); v.src=t.dataset.src; v.play(); m.textContent=t.textContent;
+  dl.href=t.dataset.src; dl.download=t.dataset.name;
+  sz.textContent = t.dataset.src.includes('teaser') ? '12 MB' : '16 MB';
+});
 </script></body></html>

@@ -93,13 +93,13 @@
   },
   {
    "cat": 1,
-   "ne": "चन्द्रमामा मानिसको पदचिह्न अझै छ — त्यहाँ हावा नभएकाले मेटिएको छैन।",
-   "en": "Footprints on the Moon are still there, because there is no wind to erase them."
+   "ne": "चन्द्रमामा पाइला अझै छन् — त्यहाँ हावा नै छैन।",
+   "en": "Footprints on the Moon are still there, because there is no wind."
   },
   {
    "cat": 1,
-   "ne": "शुक्र ग्रह सबैभन्दा तातो ग्रह हो, यद्यपि बुध सूर्यको सबैभन्दा नजिक छ।",
-   "en": "Venus is the hottest planet, even though Mercury is closest to the Sun."
+   "ne": "चन्द्रमामा पाइला अझै छन्, किनकि त्यहाँ हावा नै छैन।",
+   "en": "Footprints on the Moon are still there: there is no wind to erase them."
   },
   {
    "cat": 1,
@@ -108,13 +108,13 @@
   },
   {
    "cat": 1,
-   "ne": "अन्तरिक्षमा ध्वनि यात्रा गर्न सक्दैन, किनकि त्यहाँ हावा छैन।",
-   "en": "Sound cannot travel in space, because there is no air to carry the waves."
+   "ne": "अन्तरिक्षमा आवाज यात्रा गर्न सक्दैन, हावा नै छैन।",
+   "en": "Sound cannot travel in space, because there is no air."
   },
   {
    "cat": 1,
-   "ne": "अन्तर्राष्ट्रिय अन्तरिक्ष स्टेशनले हरेक ९० मिनेटमा पृथ्वीको एक फेरो पूरा गर्छ।",
-   "en": "The International Space Station orbits Earth once every 90 minutes."
+   "ne": "अन्तरिक्षमा आवाज यात्रा गर्न सक्दैन, हावा नै छैन।",
+   "en": "Sound cannot travel in space, because there is no air."
   },
   {
    "cat": 1,
@@ -178,7 +178,7 @@
   },
   {
    "cat": 1,
-   "ne": "अन्तरिक्षमा अन्तरिक्षयात्रीको उचाइ करिब ५ सेन्टिमिटर बढ्छ।",
+   "ne": "अन्तरिक्षमा गएपछि मान्छे करिब ५ सेन्टिमिटर अग्लो हुन्छ।",
    "en": "Astronauts grow about 5 cm taller in space."
   },
   {

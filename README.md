@@ -80,3 +80,40 @@ Player page ma:
 * **360° teaser · 12 MB** — `gk360_teaser.mp4`
 
 Tip: phone ma video mathi long-press → "Save video"; desktop ma right-click → "Save video as…"
+
+## Instagram Reels (1:32 each) — `out/reels/`
+
+12 chapter-wise vertical reels, ready to post:
+
+| file | chapter | music mood |
+|---|---|---|
+| `R01_space.mp4` | अन्तरिक्ष | space (suspended, airy) |
+| `R02_science.mp4` | विज्ञान | cool (minor pentatonic) |
+| `R03_earth.mp4` | पृथ्वी | bright (major pentatonic) |
+| `R04_animals.mp4` | जनावर | warm (bluesy) |
+| `R05_body.mp4` | मानव शरीर | cool |
+| `R06_history.mp4` | इतिहास | warm |
+| `R07_tech.mp4` | प्रविधि | cool |
+| `R08_nepal.mp4` | नेपाल | bright |
+| `R09_arts.mp4` | कला | warm |
+| `R10_sports.mp4` | खेलकुद | bright |
+| `R11_food.mp4` | खाना | warm |
+| `R12_money.mp4` | अर्थ | bright |
+
+Each: 1080×1920 · 30 fps (source 20 fps) · ~8 MB · 1:32 · beat-driven music bed
+(126 BPM, four-on-the-floor kick, offbeat hats, sub bass, arp plucks + bell hook)
+generated in `scripts/music.py` — no licensed audio needed.
+
+`R01_space_voiced.mp4` is the **voiceover pilot** (energetic Nepali TTS, 1:13,
+7 facts, music ducked -10 dB under the voice) built by `scripts/make_reels.py`
++ `scripts/reel_lib.py` + `scripts/split_voice.py`.
+
+Rebuild:
+
+```bash
+.venv/bin/python scripts/split_reels.py      # 12 reels from the main video + music
+.venv/bin/python scripts/make_reels.py R1    # voiced reel from out/audio/*.mp3
+```
+
+Get everything as a zip from the player page (**Download all 12 reels**) or
+`/reels_zip` on the preview URL.
