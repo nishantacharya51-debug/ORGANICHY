@@ -65,3 +65,18 @@ python3 -m venv .venv && .venv/bin/pip install Pillow numpy uharfbuzz freetype-p
 ```
 
 Full render takes roughly 30–40 min on 2 CPU cores (~9 fps of output).
+
+## Herne ra download garne
+
+Preview ma player chha (`scripts/serve_player.py`):
+
+```bash
+.venv/bin/python scripts/serve_player.py 8080
+```
+
+Player page ma:
+* **⬇ Download this video (720p · 16 MB)** — `gk360_web.mp4`, phone/social media ka lagi
+* **Full HD 1080p · 82 MB** — `gk360_main.mp4`, original quality
+* **360° teaser · 12 MB** — `gk360_teaser.mp4`
+
+Tip: phone ma video mathi long-press → "Save video"; desktop ma right-click → "Save video as…"
