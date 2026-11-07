@@ -1,0 +1,1890 @@
+{
+ "categories": [
+  {
+   "id": 1,
+   "ne": "अन्तरिक्ष",
+   "en": "SPACE",
+   "icon": "rocket",
+   "hue": 250
+  },
+  {
+   "id": 2,
+   "ne": "विज्ञान",
+   "en": "SCIENCE",
+   "icon": "atom",
+   "hue": 190
+  },
+  {
+   "id": 3,
+   "ne": "पृथ्वी र भूगोल",
+   "en": "EARTH & GEOGRAPHY",
+   "icon": "globe",
+   "hue": 150
+  },
+  {
+   "id": 4,
+   "ne": "जनावर",
+   "en": "ANIMALS",
+   "icon": "paw",
+   "hue": 35
+  },
+  {
+   "id": 5,
+   "ne": "मानव शरीर",
+   "en": "HUMAN BODY",
+   "icon": "heart",
+   "hue": 350
+  },
+  {
+   "id": 6,
+   "ne": "इतिहास",
+   "en": "HISTORY",
+   "icon": "scroll",
+   "hue": 25
+  },
+  {
+   "id": 7,
+   "ne": "प्रविधि",
+   "en": "TECHNOLOGY",
+   "icon": "chip",
+   "hue": 215
+  },
+  {
+   "id": 8,
+   "ne": "नेपाल",
+   "en": "NEPAL",
+   "icon": "flag",
+   "hue": 0
+  },
+  {
+   "id": 9,
+   "ne": "कला र संस्कृति",
+   "en": "ARTS & CULTURE",
+   "icon": "mask",
+   "hue": 285
+  },
+  {
+   "id": 10,
+   "ne": "खेलकुद",
+   "en": "SPORTS",
+   "icon": "ball",
+   "hue": 100
+  },
+  {
+   "id": 11,
+   "ne": "खाना र दैनिकी",
+   "en": "FOOD & DAILY LIFE",
+   "icon": "leaf",
+   "hue": 75
+  },
+  {
+   "id": 12,
+   "ne": "अर्थ र मनोरञ्जन",
+   "en": "MONEY & MEDIA",
+   "icon": "coin",
+   "hue": 45
+  }
+ ],
+ "facts": [
+  {
+   "cat": 1,
+   "ne": "सूर्यको प्रकाश पृथ्वीसम्म आउन करिब ८ मिनेट २० सेकेन्ड लाग्छ।",
+   "en": "Sunlight takes about 8 minutes 20 seconds to reach Earth."
+  },
+  {
+   "cat": 1,
+   "ne": "चन्द्रमामा मानिसको पदचिह्न अझै छ — त्यहाँ हावा नभएकाले मेटिएको छैन।",
+   "en": "Footprints on the Moon are still there, because there is no wind to erase them."
+  },
+  {
+   "cat": 1,
+   "ne": "शुक्र ग्रह सबैभन्दा तातो ग्रह हो, यद्यपि बुध सूर्यको सबैभन्दा नजिक छ।",
+   "en": "Venus is the hottest planet, even though Mercury is closest to the Sun."
+  },
+  {
+   "cat": 1,
+   "ne": "बृहस्पतिको आकारभन्दा ठूलो आँधी 'ग्रेट रेड स्पट' सयौं वर्षदेखि चलिरहेको छ।",
+   "en": "Jupiter's Great Red Spot is a storm wider than Earth that has raged for centuries."
+  },
+  {
+   "cat": 1,
+   "ne": "अन्तरिक्षमा ध्वनि यात्रा गर्न सक्दैन, किनकि त्यहाँ हावा छैन।",
+   "en": "Sound cannot travel in space, because there is no air to carry the waves."
+  },
+  {
+   "cat": 1,
+   "ne": "अन्तर्राष्ट्रिय अन्तरिक्ष स्टेशनले हरेक ९० मिनेटमा पृथ्वीको एक फेरो पूरा गर्छ।",
+   "en": "The International Space Station orbits Earth once every 90 minutes."
+  },
+  {
+   "cat": 1,
+   "ne": "शनिका औंठीहरू बरफ र धुलोका अरबौं साना टुक्राले बनेका हुन्।",
+   "en": "Saturn's rings are made of billions of pieces of ice and dust."
+  },
+  {
+   "cat": 1,
+   "ne": "सूर्यमा पृथ्वी १३ लाख पटक अटाउन सकिन्छ।",
+   "en": "You could fit about 1.3 million Earths inside the Sun."
+  },
+  {
+   "cat": 1,
+   "ne": "प्लुटो सन् २००६ मा ग्रहको सूचीबाट हटाइयो र 'बौना ग्रह' बन्यो।",
+   "en": "Pluto was reclassified as a dwarf planet in 2006."
+  },
+  {
+   "cat": 1,
+   "ne": "मंगल ग्रहको आकाश दिनमा निलो र सूर्यास्तमा रातो देखिन्छ।",
+   "en": "On Mars, the sky looks blue at noon and the sunset glows red."
+  },
+  {
+   "cat": 1,
+   "ne": "आकाशगंगा (मिल्की वे) मा करिब १०० अर्ब तारा छन्।",
+   "en": "The Milky Way contains roughly 100 billion stars."
+  },
+  {
+   "cat": 1,
+   "ne": "चन्द्रमा हरेक वर्ष पृथ्वीबाट करिब ३.८ सेन्टिमिटर टाढा हुँदैछ।",
+   "en": "The Moon drifts about 3.8 cm farther from Earth every year."
+  },
+  {
+   "cat": 1,
+   "ne": "सूर्यको ९९.८ प्रतिशत भार हाइड्रोजन र हिलियमले बनेको छ।",
+   "en": "About 99.8% of the Sun's mass is hydrogen and helium."
+  },
+  {
+   "cat": 1,
+   "ne": "पृथ्वीबाट खाली आँखाले करिब ५,००० तारा मात्र देख्न सकिन्छ।",
+   "en": "From Earth you can see only about 5,000 stars with the naked eye."
+  },
+  {
+   "cat": 1,
+   "ne": "हामीले देख्ने ताराको प्रकाश धेरै वर्ष पहिले निस्केको हुन्छ।",
+   "en": "The starlight you see tonight left its star many years ago."
+  },
+  {
+   "cat": 1,
+   "ne": "ब्ल्याक होलको गुरुत्वाकर्षण यति बलियो हुन्छ कि प्रकाश पनि फर्कन सक्दैन।",
+   "en": "A black hole's gravity is so strong that not even light can escape."
+  },
+  {
+   "cat": 1,
+   "ne": "क्षुद्रग्रह पेटीको सबैभन्दा ठूलो वस्तु 'सेरेस' हो।",
+   "en": "Ceres is the largest object in the asteroid belt."
+  },
+  {
+   "cat": 1,
+   "ne": "पृथ्वीको परिक्रमा गर्ने एक मात्र प्राकृतिक उपग्रह चन्द्रमा हो।",
+   "en": "Earth has exactly one natural moon."
+  },
+  {
+   "cat": 1,
+   "ne": "अन्तरिक्षमा अन्तरिक्षयात्रीको उचाइ करिब ५ सेन्टिमिटर बढ्छ।",
+   "en": "Astronauts grow about 5 cm taller in space."
+  },
+  {
+   "cat": 1,
+   "ne": "लाइट-इयर दूरीको नाप हो, समयको होइन।",
+   "en": "A light-year measures distance, not time."
+  },
+  {
+   "cat": 1,
+   "ne": "नेपालको पहिलो उपग्रह 'नेपालीसैट-१' सन् २०१९ मा प्रक्षेपण भयो।",
+   "en": "Nepal's first satellite, NepaliSat-1, launched in 2019."
+  },
+  {
+   "cat": 1,
+   "ne": "सूर्यको केन्द्रको तापक्रम करिब १ करोड ५० लाख डिग्री सेल्सियस छ।",
+   "en": "The Sun's core reaches about 15 million degrees Celsius."
+  },
+  {
+   "cat": 1,
+   "ne": "पृथ्वी सूर्यको वरिपरि घण्टामा करिब १,०७,००० किमी गतिले घुम्छ।",
+   "en": "Earth travels around the Sun at about 107,000 km/h."
+  },
+  {
+   "cat": 1,
+   "ne": "बृहस्पतिका ९५ भन्दा बढी चन्द्रमा पत्ता लागिसकेका छन्।",
+   "en": "More than 95 moons of Jupiter have been discovered."
+  },
+  {
+   "cat": 1,
+   "ne": "अन्तरिक्षमा सर्वसाधारणको पहुँच पुर्‍याउने पहिलो निजी कम्पनी स्पेसएक्स हो।",
+   "en": "SpaceX was the first private company to send people to orbit."
+  },
+  {
+   "cat": 1,
+   "ne": "मंगल ग्रहमा पृथ्वीको सबैभन्दा अग्लो पहाडभन्दा तीन गुणा अग्लो 'ओलम्पस मोन्स' छ।",
+   "en": "Mars has Olympus Mons, nearly three times the height of Everest."
+  },
+  {
+   "cat": 1,
+   "ne": "ध्रुव तारा (पोलारिस) रातभर लगभग एउटै ठाउँमा देखिन्छ।",
+   "en": "Polaris, the North Star, barely moves in the night sky."
+  },
+  {
+   "cat": 1,
+   "ne": "सूर्यको कुल भारको ९९.८६ प्रतिशत सौर्यमण्डलमै छ।",
+   "en": "The Sun holds 99.86% of the mass of the solar system."
+  },
+  {
+   "cat": 1,
+   "ne": "अन्तरिक्ष स्टेशनमा पानी पुनः प्रयोग गरिन्छ, पसिना र श्वासको बाफसमेत।",
+   "en": "Space stations recycle water, even sweat and exhaled breath."
+  },
+  {
+   "cat": 1,
+   "ne": "चन्द्रमाको एक दिन पृथ्वीको २७.३ दिन बराबर हुन्छ।",
+   "en": "One day on the Moon lasts about 27.3 Earth days."
+  },
+  {
+   "cat": 2,
+   "ne": "पानी ० डिग्रीमा जम्छ, तर समुद्री पानी -२ डिग्रीसम्म तरल रहन सक्छ।",
+   "en": "Fresh water freezes at 0°C, but seawater can stay liquid to about -2°C."
+  },
+  {
+   "cat": 2,
+   "ne": "महको घनत्व पानीभन्दा बढी भएकाले यो बोतलमा सयौं वर्ष बिग्रँदैन।",
+   "en": "Honey's density and low moisture let it last for centuries unspoiled."
+  },
+  {
+   "cat": 2,
+   "ne": "प्रकाशको गति प्रति सेकेन्ड करिब ३,००,००० किमी छ।",
+   "en": "Light travels at about 300,000 km per second."
+  },
+  {
+   "cat": 2,
+   "ne": "पृथ्वीको गुरुत्वाकर्षणले चन्द्रमालाई तानेर समुद्रमा ज्वारभाटा बनाउँछ।",
+   "en": "The Moon's gravity pulls Earth's oceans to create tides."
+  },
+  {
+   "cat": 2,
+   "ne": "एउटा चम्चा न्यूट्रोन ताराको पदार्थ अर्बौं टन तौलिन सक्छ।",
+   "en": "A teaspoon of neutron star material would weigh billions of tonnes."
+  },
+  {
+   "cat": 2,
+   "ne": "हाम्रो शरीरका परमाणुको ९९.९९ प्रतिशत भाग खाली ठाउँ हो।",
+   "en": "About 99.99% of every atom in your body is empty space."
+  },
+  {
+   "cat": 2,
+   "ne": "नाइट्रोजन पृथ्वीको हावाको ७८ प्रतिशत हिस्सा ओगट्छ।",
+   "en": "Nitrogen makes up about 78% of Earth's air."
+  },
+  {
+   "cat": 2,
+   "ne": "पानीको बरफ तरल पानीभन्दा हल्का हुन्छ — यो प्रकृतिमा दुर्लभ गुण हो।",
+   "en": "Ice is lighter than liquid water, a rare property in nature."
+  },
+  {
+   "cat": 2,
+   "ne": "हिलियमलाई कति पनि तापक्रममा जमाउन सकिँदैन, दबाब बढाएर मात्र।",
+   "en": "Helium never freezes at normal pressure, no matter how cold."
+  },
+  {
+   "cat": 2,
+   "ne": "विज्ञानले अहिलेसम्म करिब ११८ रासायनिक तत्व पहिचान गरेको छ।",
+   "en": "Scientists have identified 118 chemical elements."
+  },
+  {
+   "cat": 2,
+   "ne": "बिजुलीको झट्का लाग्दा शरीरमा भएको विद्युत् नभई बाहिरको करेन्ट हो।",
+   "en": "A shock comes from an external current, not electricity stored in your body."
+  },
+  {
+   "cat": 2,
+   "ne": "ओजोन तहले सूर्यको हानिकारक पराबैंगनी किरण रोक्छ।",
+   "en": "The ozone layer blocks harmful ultraviolet rays from the Sun."
+  },
+  {
+   "cat": 2,
+   "ne": "पानी सबैभन्दा धेरै पदार्थ घोल्न सक्ने 'सार्वभौमिक विलायक' मानिन्छ।",
+   "en": "Water is called the universal solvent because it dissolves more substances than any other liquid."
+  },
+  {
+   "cat": 2,
+   "ne": "ध्वनि हावामा भन्दा पानीमा करिब चार गुणा छिटो यात्रा गर्छ।",
+   "en": "Sound travels about four times faster in water than in air."
+  },
+  {
+   "cat": 2,
+   "ne": "सुनको पातलो पाना हरियो प्रकाश छान्न सक्छ, त्यसैले सुनको काँच रातो देखिन्छ।",
+   "en": "Thin gold film blocks green light, which is why gold-tinted glass looks red."
+  },
+  {
+   "cat": 2,
+   "ne": "० डिग्री सेल्सियस ३२ डिग्री फरेनहाइट बराबर हुन्छ।",
+   "en": "0°C equals 32°F."
+  },
+  {
+   "cat": 2,
+   "ne": "जिरो गुरुत्वमा आगोको ज्वाला गोलो हुन्छ।",
+   "en": "In zero gravity a flame burns as a sphere."
+  },
+  {
+   "cat": 2,
+   "ne": "एउटा मान्छेको शरीरमा करिब ३७ ट्रिलियन कोष छन्।",
+   "en": "The human body contains about 37 trillion cells."
+  },
+  {
+   "cat": 2,
+   "ne": "पृथ्वीको चुम्बकीय क्षेत्रले सूर्यको आँधीबाट हामीलाई जोगाउँछ।",
+   "en": "Earth's magnetic field shields us from solar storms."
+  },
+  {
+   "cat": 2,
+   "ne": "पारा सामान्य तापक्रममा पनि तरल रहने एक मात्र धातु हो।",
+   "en": "Mercury is the only metal that is liquid at room temperature."
+  },
+  {
+   "cat": 2,
+   "ne": "रेडियोएक्टिभ कार्बन डेटिङले हजारौं वर्ष पुराना वस्तुको उमेर बताउँछ।",
+   "en": "Carbon dating can estimate the age of objects thousands of years old."
+  },
+  {
+   "cat": 2,
+   "ne": "एक लिटर पानीको भार करिब एक किलोग्राम हुन्छ।",
+   "en": "One litre of water weighs about one kilogram."
+  },
+  {
+   "cat": 2,
+   "ne": "प्रकाश निर्वातमा सबैभन्दा छिटो हुन्छ; काँचमा त्यो गति घट्छ।",
+   "en": "Light is fastest in a vacuum and slows down in glass."
+  },
+  {
+   "cat": 2,
+   "ne": "नुन पानीमा घुल्दा पानीको उम्लने बिन्दु बढ्छ।",
+   "en": "Adding salt to water raises its boiling point."
+  },
+  {
+   "cat": 2,
+   "ne": "थर्मोमिटरको आविष्कार ग्यालिलियोको समयतिर भएको मानिन्छ।",
+   "en": "The thermometer was developed around Galileo's time."
+  },
+  {
+   "cat": 2,
+   "ne": "सबै धातु विद्युत्को सुचालक हुँदैनन्; केही अर्धचालक हुन्छन्।",
+   "en": "Not all solids conduct electricity; some are semiconductors."
+  },
+  {
+   "cat": 2,
+   "ne": "मानिसले २० हर्जभन्दा कम कम्पनको आवाज सुन्न सक्दैन।",
+   "en": "Humans cannot hear sounds below 20 hertz."
+  },
+  {
+   "cat": 2,
+   "ne": "गहिरो समुन्द्रमा पानीको दबाब प्रति १० मिटरमा एक वायुमण्डल बढ्छ।",
+   "en": "Water pressure rises by one atmosphere for every 10 m of depth."
+  },
+  {
+   "cat": 2,
+   "ne": "ओस पानीको बाफ चिसो सतहमा घनिभूत भएर बन्छ।",
+   "en": "Dew forms when water vapour condenses on a cool surface."
+  },
+  {
+   "cat": 2,
+   "ne": "सबैभन्दा कडा प्राकृतिक पदार्थ हिरा हो।",
+   "en": "Diamond is the hardest naturally occurring material."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीको ७१ प्रतिशत भाग पानीले ढाकेको छ।",
+   "en": "About 71% of Earth's surface is covered by water."
+  },
+  {
+   "cat": 3,
+   "ne": "प्रशान्त महासागर पृथ्वीको सबैभन्दा गहिरो र ठूलो महासागर हो।",
+   "en": "The Pacific is Earth's largest and deepest ocean."
+  },
+  {
+   "cat": 3,
+   "ne": "सगरमाथा समुद्र सतहबाट ८,८४८.८६ मिटर अग्लो छ।",
+   "en": "Mount Everest stands 8,848.86 m above sea level."
+  },
+  {
+   "cat": 3,
+   "ne": "मारियाना ट्रेन्च पृथ्वीको सबैभन्दा गहिरो ठाउँ हो।",
+   "en": "The Mariana Trench is the deepest known point on Earth."
+  },
+  {
+   "cat": 3,
+   "ne": "अफ्रिका र दक्षिण अमेरिका प्रत्येक वर्ष करिब ३ सेन्टिमिटर टाढा हुँदैछन्।",
+   "en": "Africa and South America drift about 3 cm apart each year."
+  },
+  {
+   "cat": 3,
+   "ne": "सहारा मरुभूमि अमेरिकाको सम्पूर्ण भूभागजत्तिकै ठूलो छ।",
+   "en": "The Sahara Desert is nearly as large as the entire United States."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीका सात महादेशमध्ये अन्टार्कटिका सबैभन्दा चिसो हो।",
+   "en": "Antarctica is the coldest of Earth's seven continents."
+  },
+  {
+   "cat": 3,
+   "ne": "अस्ट्रेलिया एकै देशले एउटा सम्पूर्ण महादेश ओगट्ने एक मात्र ठाउँ हो।",
+   "en": "Australia is the only country that covers an entire continent."
+  },
+  {
+   "cat": 3,
+   "ne": "नाइल र अमेजन विश्वका सबैभन्दा लामा नदीमध्ये पर्छन्।",
+   "en": "The Nile and the Amazon compete for the title of longest river."
+  },
+  {
+   "cat": 3,
+   "ne": "रुस क्षेत्रफलमा विश्वको सबैभन्दा ठूलो देश हो।",
+   "en": "Russia is the largest country in the world by area."
+  },
+  {
+   "cat": 3,
+   "ne": "भ्याटिकन सिटी विश्वको सबैभन्दा सानो देश हो।",
+   "en": "Vatican City is the world's smallest country."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीको केन्द्रको तापक्रम सूर्यको सतहजत्तिकै तातो छ।",
+   "en": "Earth's core is about as hot as the Sun's surface."
+  },
+  {
+   "cat": 3,
+   "ne": "डेड सी यति नुनिलो छ कि मान्छे डुब्दैन।",
+   "en": "The Dead Sea is so salty that people float in it."
+  },
+  {
+   "cat": 3,
+   "ne": "आइसल्यान्ड र ग्रीनल्यान्डमा हिउँ भए पनि ज्वालामुखी छन्।",
+   "en": "Iceland and Greenland have volcanoes despite the ice."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीको सबैभन्दा सुख्खा ठाउँमा वर्षौं वर्ष पानी पर्दैन।",
+   "en": "In parts of the Atacama Desert, rain may not fall for years."
+  },
+  {
+   "cat": 3,
+   "ne": "भूमध्यरेखा नजिक वर्षभरि दिन र रात लगभग बराबर हुन्छ।",
+   "en": "Near the equator, day and night stay roughly equal all year."
+  },
+  {
+   "cat": 3,
+   "ne": "हिमनदी बग्दा घाटी कोर्छिन् र पहाड घिसार्छिन्।",
+   "en": "Glaciers carve valleys and grind down mountains as they flow."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीको सबैभन्दा ठूलो जीवित संरचना ग्रेट ब्यारियर रिफ हो।",
+   "en": "The Great Barrier Reef is the largest structure built by living things."
+  },
+  {
+   "cat": 3,
+   "ne": "एसिया विश्वको सबैभन्दा ठूलो र जनघनत्व बढी भएको महादेश हो।",
+   "en": "Asia is the largest and most populous continent."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीको अक्ष २३.५ डिग्री ढल्केको छ, ऋतु परिवर्तनको कारण यही हो।",
+   "en": "Earth's 23.5° tilt is what gives us seasons."
+  },
+  {
+   "cat": 3,
+   "ne": "टोकियो विश्वको सबैभन्दा ठूलो महानगरीय क्षेत्र हो।",
+   "en": "Greater Tokyo is the world's largest metropolitan area."
+  },
+  {
+   "cat": 3,
+   "ne": "तिब्बतको पठारलाई 'विश्वको छाना' भनिन्छ।",
+   "en": "The Tibetan Plateau is called the Roof of the World."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीमा हरेक वर्ष लाखौं भूकम्प आउँछन्, धेरै महसुस हुँदैनन्।",
+   "en": "Millions of earthquakes shake Earth each year; most go unnoticed."
+  },
+  {
+   "cat": 3,
+   "ne": "पानीको वाष्पीकरण र वर्षा मिलेर जलचक्र चल्छ।",
+   "en": "Evaporation and rainfall together drive the water cycle."
+  },
+  {
+   "cat": 3,
+   "ne": "सबैभन्दा ठूलो मरुभूमि अन्टार्कटिका हो — यो बरफको मरुभूमि हो।",
+   "en": "The largest desert on Earth is Antarctica, a polar desert."
+  },
+  {
+   "cat": 3,
+   "ne": "महासागरले पृथ्वीको ९७ प्रतिशत पानी समातेको छ।",
+   "en": "The oceans hold about 97% of Earth's water."
+  },
+  {
+   "cat": 3,
+   "ne": "पृथ्वीको वायुमण्डल पाँच तहमा विभाजित छ।",
+   "en": "Earth's atmosphere is divided into five main layers."
+  },
+  {
+   "cat": 3,
+   "ne": "बङ्गालको खाडी विश्वको सबैभन्दा ठूलो खाडी हो।",
+   "en": "The Bay of Bengal is the largest bay in the world."
+  },
+  {
+   "cat": 3,
+   "ne": "समुद्री पानीको तापक्रम गहिराइसँगै घट्छ।",
+   "en": "Ocean water gets colder as depth increases."
+  },
+  {
+   "cat": 3,
+   "ne": "म्याग्मा पृथ्वीको भित्री तहमा पग्लिएको चट्टान हो।",
+   "en": "Magma is molten rock beneath Earth's surface."
+  },
+  {
+   "cat": 4,
+   "ne": "हात्ती आफ्नो सुँडले निकै सानो सुईसमेत उठाउन सक्छ।",
+   "en": "An elephant's trunk can pick up something as small as a needle."
+  },
+  {
+   "cat": 4,
+   "ne": "अक्टोपसका तीन वटा मुटु हुन्छन्।",
+   "en": "An octopus has three hearts."
+  },
+  {
+   "cat": 4,
+   "ne": "मौरीले आफ्नो जीवनकालमा एक चम्चाको बाह्रौं भाग जति मह बनाउँछ।",
+   "en": "A single worker bee makes about one-twelfth of a teaspoon of honey in its life."
+  },
+  {
+   "cat": 4,
+   "ne": "सिंह समूहमा बस्ने एक मात्र ठूलो बिरालो प्रजाति हो।",
+   "en": "Lions are the only big cats that live in groups."
+  },
+  {
+   "cat": 4,
+   "ne": "क्याङ्गारुको पुच्छर सन्तुलन र सहाराका लागि पाँचौं खुट्टाजस्तै काम गर्छ।",
+   "en": "A kangaroo's tail works like a fifth limb for balance and support."
+  },
+  {
+   "cat": 4,
+   "ne": "कछुवा आफ्नो खोल छोड्न सक्दैन, त्यो यसको हड्डी हो।",
+   "en": "A turtle cannot leave its shell, because the shell is its skeleton."
+  },
+  {
+   "cat": 4,
+   "ne": "माछाको सम्झना केही सेकेन्डमा मेटिन्छ भन्ने भ्रम हो।",
+   "en": "The idea that fish have a three-second memory is a myth."
+  },
+  {
+   "cat": 4,
+   "ne": "पेन्गुइन उड्न नसके पनि पानीमुनि ३० किमी प्रतिघण्टाको गतिमा पौडिन्छ।",
+   "en": "Penguins cannot fly but can swim at up to 30 km/h."
+  },
+  {
+   "cat": 4,
+   "ne": "गैंडाको सिङ हड्डी वा दाँत नभई केराटिनको बनेको हुन्छ।",
+   "en": "A rhino's horn is made of keratin, not bone or ivory."
+  },
+  {
+   "cat": 4,
+   "ne": "ह्वेल माछा होइन, स्तनधारी हो — सास फेर्न सतहमा आउँछ।",
+   "en": "Whales are mammals, not fish, and must surface to breathe."
+  },
+  {
+   "cat": 4,
+   "ne": "चितुवा पृथ्वीको सबैभन्दा छिटो दौडने जनावर हो, १०० किमी/घण्टासम्म।",
+   "en": "The cheetah is the fastest land animal, reaching 100 km/h."
+  },
+  {
+   "cat": 4,
+   "ne": "कुकुरको सुँघ्ने शक्ति मानिसभन्दा करिब १०,००० गुणा बढी हुन्छ।",
+   "en": "A dog's sense of smell is up to 10,000 times sharper than ours."
+  },
+  {
+   "cat": 4,
+   "ne": "बिरालोले दिनको १६ घण्टासम्म सुत्छ।",
+   "en": "Cats can sleep up to 16 hours a day."
+  },
+  {
+   "cat": 4,
+   "ne": "घाममा हिँड्ने गोहीको लिङ्ग अण्डाको तापक्रमले निर्धारण गर्छ।",
+   "en": "In crocodiles, the egg's temperature decides the hatchling's sex."
+  },
+  {
+   "cat": 4,
+   "ne": "समुद्री घोडाको बच्चा बुबाले कोखमा राखेर जन्माउँछ।",
+   "en": "Male seahorses carry and give birth to the young."
+  },
+  {
+   "cat": 4,
+   "ne": "आँखीभौं नभएको एक मात्र कुकुर जाति होइन — धेरै जनावरले भौं देखाउँदैनन्।",
+   "en": "Many animals, unlike humans, have no eyebrows at all."
+  },
+  {
+   "cat": 4,
+   "ne": "टारान्टुला माकुरोले जीवनभर आफ्नो काँटी बदल्छ।",
+   "en": "Tarantulas moult their exoskeleton throughout life."
+  },
+  {
+   "cat": 4,
+   "ne": "हिमचितुवा हिमालयको उच्च भेगमा बस्ने दुर्लभ बिरालो हो।",
+   "en": "The snow leopard is a rare cat of the high Himalaya."
+  },
+  {
+   "cat": 4,
+   "ne": "महसँग मौरीको छत्ता व्यवस्थित गर्ने आफ्नै 'नृत्य भाषा' छ।",
+   "en": "Bees communicate the location of flowers through a waggle dance."
+  },
+  {
+   "cat": 4,
+   "ne": "डल्फिनले आवाजको प्रतिध्वनिबाट बाटो पहिल्याउँछ।",
+   "en": "Dolphins navigate by echolocation."
+  },
+  {
+   "cat": 4,
+   "ne": "उल्लुले आफ्नो टाउको २७० डिग्रीसम्म घुमाउन सक्छ।",
+   "en": "Owls can rotate their heads about 270 degrees."
+  },
+  {
+   "cat": 4,
+   "ne": "हात्तीको गर्भावस्था करिब २२ महिना चल्छ, सबैभन्दा लामो।",
+   "en": "An elephant's pregnancy lasts about 22 months, the longest of any land animal."
+  },
+  {
+   "cat": 4,
+   "ne": "सर्पले आफ्नो जिब्रोले वरपरको रासायनिक सुगन्ध लिन्छ।",
+   "en": "Snakes sample chemicals in the air with their tongues."
+  },
+  {
+   "cat": 4,
+   "ne": "जिराफको जिब्रो करिब ५० सेन्टिमिटर लामो र कालो हुन्छ।",
+   "en": "A giraffe's tongue is about 50 cm long and dark purple."
+  },
+  {
+   "cat": 4,
+   "ne": "हाँसको खुट्टा चिसो पानीमा पनि न्यानो रहन्छ।",
+   "en": "Ducks keep their feet from freezing through a special blood-exchange system."
+  },
+  {
+   "cat": 4,
+   "ne": "विश्वमा करिब १० लाखभन्दा बढी कीरा प्रजाति पहिचान भएका छन्।",
+   "en": "More than a million insect species have been identified."
+  },
+  {
+   "cat": 4,
+   "ne": "स्पन्ज जनावर हो, बिरुवा होइन।",
+   "en": "A sea sponge is an animal, not a plant."
+  },
+  {
+   "cat": 4,
+   "ne": "कोइली आफ्नो अण्डा अरू चराको गुँडमा पार्छ।",
+   "en": "Cuckoos lay their eggs in other birds' nests."
+  },
+  {
+   "cat": 4,
+   "ne": "हरेक बाघको धर्साको ढाँचा फरक हुन्छ, औंठाछापझैं।",
+   "en": "Every tiger's stripe pattern is unique, like a fingerprint."
+  },
+  {
+   "cat": 4,
+   "ne": "मुसा मान्छेजस्तै हाँस्न सक्ने भएको कारण अनुसन्धानमा प्रयोग हुन्छ।",
+   "en": "Rats can laugh when tickled, which is why they are used in research."
+  },
+  {
+   "cat": 5,
+   "ne": "मानव शरीरमा २०६ वटा हड्डी हुन्छन्।",
+   "en": "An adult human body has 206 bones."
+  },
+  {
+   "cat": 5,
+   "ne": "मुटु दिनमा करिब १,००,००० पटक धड्कन्छ।",
+   "en": "Your heart beats about 100,000 times a day."
+  },
+  {
+   "cat": 5,
+   "ne": "औंठाछाप जुम्ल्याहामा पनि फरक हुन्छ।",
+   "en": "Even identical twins have different fingerprints."
+  },
+  {
+   "cat": 5,
+   "ne": "मस्तिष्कमा करिब ८६ अर्ब स्नायुकोष हुन्छन्।",
+   "en": "The brain contains roughly 86 billion neurons."
+  },
+  {
+   "cat": 5,
+   "ne": "शरीरको सबैभन्दा ठूलो अंग छाला हो।",
+   "en": "The skin is the body's largest organ."
+  },
+  {
+   "cat": 5,
+   "ne": "मानिसको शरीरमा ६० प्रतिशतभन्दा बढी पानी हुन्छ।",
+   "en": "More than 60% of the human body is water."
+  },
+  {
+   "cat": 5,
+   "ne": "रातो रक्तकोषले अक्सिजन बोक्न्छ, यसको आयु १२० दिन हुन्छ।",
+   "en": "Red blood cells carry oxygen and live about 120 days."
+  },
+  {
+   "cat": 5,
+   "ne": "छाला हरेक २७ दिनमा नयाँ हुन्छ।",
+   "en": "Your skin renews itself roughly every 27 days."
+  },
+  {
+   "cat": 5,
+   "ne": "जिब्रोको स्वाद ग्राही कोष १०–१५ दिनमै बदलिन्छन्।",
+   "en": "Taste bud cells are replaced every 10 to 15 days."
+  },
+  {
+   "cat": 5,
+   "ne": "मानिसको नाकले करिब १० खर्ब गन्ध छुट्याउन सक्छ।",
+   "en": "The human nose can distinguish around a trillion smells."
+  },
+  {
+   "cat": 5,
+   "ne": "औंलाको नङ महिनामा करिब ३.५ मिलिमिटर बढ्छ।",
+   "en": "Fingernails grow about 3.5 mm a month."
+  },
+  {
+   "cat": 5,
+   "ne": "हामी दिनमा करिब २०,००० पटक श्वास लिन्छौं।",
+   "en": "We take about 20,000 breaths a day."
+  },
+  {
+   "cat": 5,
+   "ne": "मस्तिष्कले शरीरको कुल ऊर्जाको २० प्रतिशत खपत गर्छ।",
+   "en": "The brain uses about 20% of the body's energy."
+  },
+  {
+   "cat": 5,
+   "ne": "मानव आँखाले करिब १ करोड रंग छुट्याउन सक्छ।",
+   "en": "The human eye can distinguish about 10 million colours."
+  },
+  {
+   "cat": 5,
+   "ne": "हाम्रो शरीरमा करिब ६०० भन्दा बढी मांसपेशी छन्।",
+   "en": "The body has more than 600 muscles."
+  },
+  {
+   "cat": 5,
+   "ne": "पेटको एसिड धातुसमेत घुलाउन सक्ने बलियो हुन्छ।",
+   "en": "Stomach acid is strong enough to dissolve metal."
+  },
+  {
+   "cat": 5,
+   "ne": "औंलाको छाप भ्रूणको चौथो महिनामै बनिसक्छ।",
+   "en": "Fingerprints form by the fourth month of pregnancy."
+  },
+  {
+   "cat": 5,
+   "ne": "हामी बुढो हुँदै जाँदा हड्डीको संख्या घटेर २०६ हुन्छ।",
+   "en": "Babies have about 300 bones; adults have 206."
+  },
+  {
+   "cat": 5,
+   "ne": "यकृत शरीरको सबैभन्दा ठूलो भित्री अंग हो।",
+   "en": "The liver is the largest internal organ."
+  },
+  {
+   "cat": 5,
+   "ne": "हाम्रो रगतको रंग रातो हुनुको कारण हिमोग्लोबिन हो।",
+   "en": "Haemoglobin gives blood its red colour."
+  },
+  {
+   "cat": 5,
+   "ne": "निद्रामा मस्तिष्क दिनभरका अनुभवलाई सम्झनामा बदल्छ।",
+   "en": "During sleep the brain converts experiences into memory."
+  },
+  {
+   "cat": 5,
+   "ne": "आँसु खुसी र दुःखमा फरक रासायनिक बनावटको हुन्छ।",
+   "en": "Emotional tears differ chemically from tears caused by irritation."
+  },
+  {
+   "cat": 5,
+   "ne": "मानिसको शरीरमा रहेको लोहोले सानो किल्ला बनाउन सकिन्छ।",
+   "en": "The iron in one human body could make a small nail."
+  },
+  {
+   "cat": 5,
+   "ne": "हामी हाँस्दा १५ भन्दा बढी मांसपेशी प्रयोग हुन्छन्।",
+   "en": "Laughing uses more than 15 facial muscles."
+  },
+  {
+   "cat": 5,
+   "ne": "शरीरको तापक्रम सामान्यतया ३७ डिग्री सेल्सियस हुन्छ।",
+   "en": "Normal body temperature is about 37°C."
+  },
+  {
+   "cat": 5,
+   "ne": "कानको भित्री भाग सन्तुलन कायम राख्न मद्दत गर्छ।",
+   "en": "The inner ear helps keep your balance."
+  },
+  {
+   "cat": 5,
+   "ne": "एक पटक हाच्छ्युँ गर्दा हावा १५० किमी/घण्टासम्म बेगमा निस्कन्छ।",
+   "en": "A sneeze can blast air out at up to 150 km/h."
+  },
+  {
+   "cat": 5,
+   "ne": "रक्तनलीहरू जोड्दा पृथ्वीलाई दुई पटक घेर्न सकिन्छ।",
+   "en": "Stretched end to end, blood vessels would circle Earth twice."
+  },
+  {
+   "cat": 5,
+   "ne": "हड्डी जीवित तन्तु हो, त्यसैले यो आफैं मर्मत हुन्छ।",
+   "en": "Bone is living tissue and repairs itself."
+  },
+  {
+   "cat": 5,
+   "ne": "मस्तिष्कमा दुखाइ ग्राही हुँदैनन्, टाउको दुखाइ अन्यत्रबाट आउँछ।",
+   "en": "The brain itself feels no pain; headaches come from elsewhere."
+  },
+  {
+   "cat": 6,
+   "ne": "महात्मा गान्धीले दक्षिण अफ्रिकामा रहँदा वकिलको रूपमा काम गरे।",
+   "en": "Gandhi worked as a lawyer in South Africa before India's freedom struggle."
+  },
+  {
+   "cat": 6,
+   "ne": "माउन्ट एभरस्टको नाम १९ वर्षकै उमेरमा मृत्यु भएका सर्वेयर जर्ज एभरस्टबाट राखिएको हो।",
+   "en": "Everest is named after George Everest, a surveyor who never climbed it."
+  },
+  {
+   "cat": 6,
+   "ne": "पिरामिड बनाउँदा कुनै पाङ्ग्रा वा इन्जिन प्रयोग भएको थिएन।",
+   "en": "The pyramids were built without wheels or engines."
+  },
+  {
+   "cat": 6,
+   "ne": "सन् १९६९ मा नील आर्मस्ट्रङ चन्द्रमामा पाइला राख्ने पहिलो मान्छे बने।",
+   "en": "In 1969, Neil Armstrong became the first person to walk on the Moon."
+  },
+  {
+   "cat": 6,
+   "ne": "कागज चीनमा करिब २,००० वर्ष पहिले आविष्कार भयो।",
+   "en": "Paper was invented in China about 2,000 years ago."
+  },
+  {
+   "cat": 6,
+   "ne": "रोमन साम्राज्यको पतन सन् ४७६ मा भएको मानिन्छ।",
+   "en": "The Western Roman Empire is said to have fallen in 476 CE."
+  },
+  {
+   "cat": 6,
+   "ne": "नेपाल एकीकरणका नायक पृथ्वीनारायण शाह १७४३ मा गोरखाका राजा बने।",
+   "en": "Prithvi Narayan Shah became king of Gorkha in 1743."
+  },
+  {
+   "cat": 6,
+   "ne": "सन् १८५७ को सिपाही विद्रोहलाई भारतको पहिलो स्वतन्त्रता संग्राम भनिन्छ।",
+   "en": "The 1857 revolt is often called India's First War of Independence."
+  },
+  {
+   "cat": 6,
+   "ne": "टाइटानिक जहाज सन् १९१२ मा पहिलो यात्रामै डुबेको थियो।",
+   "en": "The Titanic sank on its maiden voyage in 1912."
+  },
+  {
+   "cat": 6,
+   "ne": "पहिलो विश्वयुद्ध सन् १९१४ देखि १९१८ सम्म चल्यो।",
+   "en": "World War I lasted from 1914 to 1918."
+  },
+  {
+   "cat": 6,
+   "ne": "चन्द्रगुप्त मौर्यले मौर्य साम्राज्यको स्थापना गरे।",
+   "en": "Chandragupta Maurya founded the Maurya Empire."
+  },
+  {
+   "cat": 6,
+   "ne": "अशोकले कलिङ्ग युद्धपछि हिंसा त्यागेर बुद्ध धर्म फैलाए।",
+   "en": "After the Kalinga war, Ashoka renounced violence and spread Buddhism."
+  },
+  {
+   "cat": 6,
+   "ne": "गुटेनबर्गको छापाखानाले पुस्तकलाई सर्वसुलभ बनायो।",
+   "en": "Gutenberg's printing press made books available to ordinary people."
+  },
+  {
+   "cat": 6,
+   "ne": "फ्रान्सको क्रान्ति सन् १७८९ मा सुरु भयो।",
+   "en": "The French Revolution began in 1789."
+  },
+  {
+   "cat": 6,
+   "ne": "जोन क्याबटले सन् १४९७ मा उत्तर अमेरिका पुगे।",
+   "en": "John Cabot reached North America in 1497."
+  },
+  {
+   "cat": 6,
+   "ne": "नेपालमा १९५१ मा राणा शासन अन्त्य भयो।",
+   "en": "Rana rule in Nepal ended in 1951."
+  },
+  {
+   "cat": 6,
+   "ne": "सन् १९९० को लोकतन्त्र आन्दोलनपछि नेपालमा बहुदल फर्कियो।",
+   "en": "Multi-party democracy returned to Nepal after the 1990 movement."
+  },
+  {
+   "cat": 6,
+   "ne": "चीनको महान् पर्खालको निर्माण सयौं वर्षसम्म चलिरह्यो।",
+   "en": "The Great Wall of China was built and rebuilt over centuries."
+  },
+  {
+   "cat": 6,
+   "ne": "इजिप्टकी क्लियोपेट्राले पिरामिड बनेको सयौं वर्षपछि शासन गरिन्।",
+   "en": "Cleopatra ruled Egypt centuries after the pyramids were built."
+  },
+  {
+   "cat": 6,
+   "ne": "म्यागेलनको अभियानले पहिलो पटक पृथ्वीको परिक्रमा गर्‍यो।",
+   "en": "Magellan's expedition made the first circumnavigation of the globe."
+  },
+  {
+   "cat": 6,
+   "ne": "विश्वको पहिलो रेल सन् १८०४ मा वेल्समा चल्यो।",
+   "en": "The first steam locomotive ran in Wales in 1804."
+  },
+  {
+   "cat": 6,
+   "ne": "लुम्बिनी गौतम बुद्धको जन्मस्थल हो, जहाँ अशोकको स्तम्भ छ।",
+   "en": "Lumbini is the Buddha's birthplace, marked by an Ashoka pillar."
+  },
+  {
+   "cat": 6,
+   "ne": "सन् १९४५ मा संयुक्त राष्ट्रसंघको स्थापना भयो।",
+   "en": "The United Nations was founded in 1945."
+  },
+  {
+   "cat": 6,
+   "ne": "नेपाल संयुक्त राष्ट्रसंघको सदस्य सन् १९५५ मा बन्यो।",
+   "en": "Nepal joined the United Nations in 1955."
+  },
+  {
+   "cat": 6,
+   "ne": "पहिलो कम्प्युटर ENIAC कोठाभरि ठूलो थियो।",
+   "en": "The first electronic computer, ENIAC, filled an entire room."
+  },
+  {
+   "cat": 6,
+   "ne": "रोमको कोलोजियममा करिब ५०,००० दर्शक अट्थे।",
+   "en": "The Roman Colosseum could hold about 50,000 spectators."
+  },
+  {
+   "cat": 6,
+   "ne": "सिल्क रोडले चीनलाई युरोप र भारतसँग जोड्थ्यो।",
+   "en": "The Silk Road linked China with India and Europe."
+  },
+  {
+   "cat": 6,
+   "ne": "नेपालको एकीकरणमा भीमसेन थापा र अमरसिंह थापाको ठूलो भूमिका थियो।",
+   "en": "Bhimsen Thapa and Amar Singh Thapa were key figures in Nepal's unification."
+  },
+  {
+   "cat": 6,
+   "ne": "सन् १९६६ मा भारतमा हरित क्रान्ति सुरु भयो।",
+   "en": "India's Green Revolution began in the mid-1960s."
+  },
+  {
+   "cat": 6,
+   "ne": "बर्लिनको पर्खाल सन् १९८९ मा भत्कियो।",
+   "en": "The Berlin Wall fell in 1989."
+  },
+  {
+   "cat": 7,
+   "ne": "पहिलो इमेल सन् १९७१ मा पठाइएको थियो।",
+   "en": "The first email was sent in 1971."
+  },
+  {
+   "cat": 7,
+   "ne": "संसारमा हरेक मिनेट करिब ५० करोड ट्विट (पोस्ट) पोस्ट हुन्छ।",
+   "en": "Hundreds of millions of posts are shared online every minute."
+  },
+  {
+   "cat": 7,
+   "ne": "वाइफाइ भन्ने शब्दको कुनै पूरा रूप थिएन, यो बजारीकरणका लागि बनाइयो।",
+   "en": "'Wi-Fi' never stood for anything; it was invented by a marketing firm."
+  },
+  {
+   "cat": 7,
+   "ne": "कम्प्युटरको 'बग' शब्द पहिलो पटक साँच्चै कीरा भेटिएपछि आयो।",
+   "en": "The term computer 'bug' dates to a real moth found in a machine."
+  },
+  {
+   "cat": 7,
+   "ne": "विश्वको पहिलो वेबसाइट सन् १९९१ मा अनलाइन आयो।",
+   "en": "The first website went online in 1991."
+  },
+  {
+   "cat": 7,
+   "ne": "स्मार्टफोनमा भएको कम्प्युटिङ शक्ति सन् १९६९ को चन्द्रमा अभियानभन्दा धेरै हो।",
+   "en": "A smartphone has far more computing power than the 1969 Moon mission."
+  },
+  {
+   "cat": 7,
+   "ne": "इन्टरनेटमा हरेक दिन करोडौं पटक ह्याकिङ प्रयास हुन्छ।",
+   "en": "Millions of cyberattack attempts happen every day."
+  },
+  {
+   "cat": 7,
+   "ne": "ब्लुटुथको नाम डेनमार्कका राजा ह्यारल्ड ब्लुटुथबाट राखिएको हो।",
+   "en": "Bluetooth is named after the Danish king Harald Bluetooth."
+  },
+  {
+   "cat": 7,
+   "ne": "कृत्रिम बुद्धिमत्ताले अहिले नै कविता, कोड र चित्र बनाउन सक्छ।",
+   "en": "AI can now write code, poetry and images."
+  },
+  {
+   "cat": 7,
+   "ne": "गुगलको नाम 'गुगोल' को गल्ती लेखाइबाट रहन गयो।",
+   "en": "Google's name comes from a misspelling of 'googol'."
+  },
+  {
+   "cat": 7,
+   "ne": "इन्टरनेटका केबल समुद्रको तलबाट महादेश जोड्छन्।",
+   "en": "Undersea cables carry most of the internet between continents."
+  },
+  {
+   "cat": 7,
+   "ne": "सन् १८२६ को पहिलो फोटो खिच्न करिब ८ घण्टाको एक्सपोजर चाहिन्थ्यो।",
+   "en": "The first photograph needed about eight hours of exposure."
+  },
+  {
+   "cat": 7,
+   "ne": "मोबाइल फोनको आविष्कार सन् १९७३ मा भयो, तौल १ किलो थियो।",
+   "en": "The first mobile phone call was made in 1973; the phone weighed about 1 kg."
+  },
+  {
+   "cat": 7,
+   "ne": "बिटको नाम 'बाइनरी डिजिट' बाट आएको हो।",
+   "en": "'Bit' is short for binary digit."
+  },
+  {
+   "cat": 7,
+   "ne": "तपाईंको अहिलेको फोनमा भएको स्टोरेज १९९० को कम्प्युटरभन्दा लाखौं गुणा ठूलो छ।",
+   "en": "Your phone's storage dwarfs a 1990s computer's by a million times."
+  },
+  {
+   "cat": 7,
+   "ne": "रोबोट शब्द चेक लेखक कारेल चापेकको नाटकबाट आयो।",
+   "en": "The word 'robot' comes from a Czech play by Karel Čapek."
+  },
+  {
+   "cat": 7,
+   "ne": "क्लाउड स्टोरेज भनेको अरू कतै राखिएको सर्भरमै हुन्छ।",
+   "en": "The cloud is just someone else's servers, stored elsewhere."
+  },
+  {
+   "cat": 7,
+   "ne": "इन्टरनेटमा जोडिएका उपकरणको संख्या अर्बौंमा छ।",
+   "en": "Billions of devices are connected to the internet."
+  },
+  {
+   "cat": 7,
+   "ne": "GPS तपाईंको स्थान निर्धारण गर्न कम्तीमा ४ उपग्रह प्रयोग गर्छ।",
+   "en": "GPS needs at least four satellites to pin down your location."
+  },
+  {
+   "cat": 7,
+   "ne": "पहिलो भिडियो गेम 'टेनिस फर टु' सन् १९५८ मा बन्यो।",
+   "en": "One of the first video games, Tennis for Two, appeared in 1958."
+  },
+  {
+   "cat": 7,
+   "ne": "क्वान्टम कम्प्युटरले एकैपटक धेरै सम्भावना जाँच्न सक्छ।",
+   "en": "Quantum computers can explore many possibilities at once."
+  },
+  {
+   "cat": 7,
+   "ne": "इमोजी पहिलो पटक जापानमा सन् १९९९ मा बनाइयो।",
+   "en": "The first emoji set was created in Japan in 1999."
+  },
+  {
+   "cat": 7,
+   "ne": "पासवर्ड 'password' अझै संसारको सबैभन्दा प्रयोग हुने असुरक्षित पासवर्ड हो।",
+   "en": "'password' is still among the most commonly used—and worst—passwords."
+  },
+  {
+   "cat": 7,
+   "ne": "अनलाइन भिडियो हेर्दा धेरै डाटा खपत हुन्छ, HD मा घण्टामा करिब ३ GB।",
+   "en": "Streaming HD video uses about 3 GB of data per hour."
+  },
+  {
+   "cat": 7,
+   "ne": "सन् २०२४ मा विश्वका आधाभन्दा बढी मानिस इन्टरनेटमा जोडिए।",
+   "en": "By the mid-2020s, more than half of humanity was online."
+  },
+  {
+   "cat": 7,
+   "ne": "मोर्स कोडमा SOS को ढाँचा तीन छोटा, तीन लामा, तीन छोटा संकेत हो।",
+   "en": "In Morse code, SOS is three short, three long, three short signals."
+  },
+  {
+   "cat": 7,
+   "ne": "स्क्रिनको निलो प्रकाश निद्रामा असर गर्न सक्छ।",
+   "en": "Blue light from screens can disturb sleep."
+  },
+  {
+   "cat": 7,
+   "ne": "ओपन सोर्स सफ्टवेयर जोसुकैले सुधार्न सक्छ।",
+   "en": "Anyone can improve open-source software."
+  },
+  {
+   "cat": 7,
+   "ne": "ड्रोन पहिलो पटक सैन्य प्रयोगका लागि बनाइएको थियो।",
+   "en": "Drones were first developed for military use."
+  },
+  {
+   "cat": 7,
+   "ne": "सन् २००७ देखि स्मार्टफोनले संसारको इन्टरनेट प्रयोगको स्वरूप बदल्यो।",
+   "en": "Smartphones reshaped internet use from 2007 onward."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको क्षेत्रफल १,४७,५१६ वर्ग किलोमिटर छ।",
+   "en": "Nepal covers 147,516 square kilometres."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको राजधानी काठमाडौं हो, समुद्र सतहबाट करिब १,४०० मिटर उचाइमा।",
+   "en": "Nepal's capital Kathmandu sits at about 1,400 m above sea level."
+  },
+  {
+   "cat": 8,
+   "ne": "पृथ्वीका १४ अठहजारी हिमालमध्ये ८ वटा नेपालमा छन्।",
+   "en": "Eight of the world's 14 peaks above 8,000 m are in Nepal."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको राष्ट्रिय फूल लालीगुराँस हो।",
+   "en": "Nepal's national flower is the rhododendron (laligurans)."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको झन्डा विश्वको एक मात्र गैर-आयताकार राष्ट्रिय झन्डा हो।",
+   "en": "Nepal's flag is the world's only non-rectangular national flag."
+  },
+  {
+   "cat": 8,
+   "ne": "गाई नेपालको राष्ट्रिय जनावर र डाँफे राष्ट्रिय चरा हो।",
+   "en": "The cow is Nepal's national animal and the danphe its national bird."
+  },
+  {
+   "cat": 8,
+   "ne": "सगरमाथा सन् १९५३ मा एडमन्ड हिलारी र तेन्जिङ नोर्गे शेर्पाले पहिलो पटक आरोहण गरे।",
+   "en": "Everest was first climbed in 1953 by Edmund Hillary and Tenzing Norgay."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालमा १२५ भन्दा बढी जातीय समूह र १२३ भाषा छन्।",
+   "en": "Nepal has more than 125 ethnic groups and 123 languages."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपाल २००८ मा धर्मनिरपेक्ष घोषित हुनुअघि विश्वकै अन्तिम हिन्दु राज्य थियो।",
+   "en": "Nepal was the world's last Hindu kingdom until it became secular in 2008."
+  },
+  {
+   "cat": 8,
+   "ne": "काठमाडौं उपत्यकामा ७ वटा विश्व सम्पदा क्षेत्र छन्।",
+   "en": "The Kathmandu Valley has seven UNESCO World Heritage sites."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको सबैभन्दा लामो नदी कर्णाली हो।",
+   "en": "The Karnali is Nepal's longest river."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको सबैभन्दा ठूलो ताल रारा हो, जो मुगु जिल्लामा छ।",
+   "en": "Rara Lake in Mugu is Nepal's largest lake."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको सबैभन्दा गहिरो ताल शे-फोक्सुन्डो हो।",
+   "en": "Shey Phoksundo is Nepal's deepest lake."
+  },
+  {
+   "cat": 8,
+   "ne": "चितवन राष्ट्रिय निकुञ्ज नेपालको पहिलो राष्ट्रिय निकुञ्ज हो।",
+   "en": "Chitwan is Nepal's first national park."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालमा एकसिङ्गे गैंडा र सुन्दर बाघ संरक्षित छन्।",
+   "en": "Nepal protects both the one-horned rhino and the Bengal tiger."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको झन्डामा चन्द्र र सूर्यको चिन्ह छ।",
+   "en": "Nepal's flag bears symbols of the moon and the sun."
+  },
+  {
+   "cat": 8,
+   "ne": "सन् २०१५ को भूकम्पले नेपालका धेरै सम्पदा क्षति गर्‍यो।",
+   "en": "The 2015 earthquake damaged many of Nepal's heritage sites."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको राष्ट्रिय गान 'सयौं थुँगा फूलका' हो।",
+   "en": "Nepal's national anthem is 'Sayaun Thunga Phool Ka'."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपाल दक्षिण एशियाको सबैभन्दा पुरानो स्वतन्त्र राष्ट्रमध्ये एक हो।",
+   "en": "Nepal has never been colonised and has an ancient independent history."
+  },
+  {
+   "cat": 8,
+   "ne": "लुम्बिनी बुद्धको जन्मस्थल भएकाले विश्वभरका बौद्धको तीर्थस्थल हो।",
+   "en": "Lumbini, the Buddha's birthplace, draws pilgrims worldwide."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको सबैभन्दा ठूलो हिमनदी न्गोजुम्पा हो।",
+   "en": "The Ngozumpa is Nepal's longest glacier."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालमा विश्वको सबैभन्दा अग्लो स्थानमा रहेको होटेलहरू छन्।",
+   "en": "Nepal has some of the world's highest-altitude hotels."
+  },
+  {
+   "cat": 8,
+   "ne": "पोखरा नेपालको पर्यटन राजधानी मानिन्छ।",
+   "en": "Pokhara is considered Nepal's tourism capital."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालमा १० प्राकृतिक विश्व सम्पदा क्षेत्र छन्।",
+   "en": "Nepal has ten natural and cultural UNESCO World Heritage properties."
+  },
+  {
+   "cat": 8,
+   "ne": "जनकपुरलाई प्राचीन मिथिलाको केन्द्र मानिन्छ।",
+   "en": "Janakpur is regarded as the heart of ancient Mithila."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको अर्थतन्त्रमा रेमिट्यान्सको हिस्सा ठूलो छ।",
+   "en": "Remittances are a major part of Nepal's economy."
+  },
+  {
+   "cat": 8,
+   "ne": "काठमाडौंको दरबारमार्ग र ठमेल पर्यटकीय केन्द्र हुन्।",
+   "en": "Durbar Marg and Thamel are Kathmandu's tourist hubs."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालका किसान समुदायले स्थानीय बीउ जोगाउन आफ्नै बीउ बैंक चलाउँछन्।",
+   "en": "Nepal is home to many community seed banks preserving local crop varieties."
+  },
+  {
+   "cat": 8,
+   "ne": "भक्तपुरको दरबार क्षेत्र नेवारी वास्तुकलाको उत्कृष्ट नमुना हो।",
+   "en": "Bhaktapur Durbar Square is a masterpiece of Newari architecture."
+  },
+  {
+   "cat": 8,
+   "ne": "नेपालको साक्षरता दर पछिल्लो दशकमा उल्लेखनीय बढेको छ।",
+   "en": "Nepal's literacy rate has risen significantly in recent decades."
+  },
+  {
+   "cat": 9,
+   "ne": "लियोनार्डो दा भिन्चीले उड्ने मेसिनको नक्सा सयौं वर्ष अघि बनाए।",
+   "en": "Leonardo da Vinci sketched flying machines centuries before flight."
+  },
+  {
+   "cat": 9,
+   "ne": "मोनालिसाको चित्र सानो छ, करिब ७७ × ५३ सेन्टिमिटर।",
+   "en": "The Mona Lisa is small—about 77 by 53 cm."
+  },
+  {
+   "cat": 9,
+   "ne": "बीथोभन बहिरो हुँदै पनि संगीत रचना गरिरहे।",
+   "en": "Beethoven kept composing even after going deaf."
+  },
+  {
+   "cat": 9,
+   "ne": "रामायण र महाभारत संसारका सबैभन्दा लामा महाकाव्यमध्ये पर्छन्।",
+   "en": "The Ramayana and Mahabharata are among the world's longest epics."
+  },
+  {
+   "cat": 9,
+   "ne": "शेक्सपियरले 'नेपाल' शब्द आफ्नो नाटकमा प्रयोग गरेका थिए।",
+   "en": "Shakespeare mentioned 'Nepal' in one of his plays."
+  },
+  {
+   "cat": 9,
+   "ne": "भक्तपुरको जुजु धौं नेवारी माटो कलाको प्रसिद्ध नमुना हो।",
+   "en": "Bhaktapur's pottery square is famous for Newari clay art."
+  },
+  {
+   "cat": 9,
+   "ne": "थाङ्का चित्र बौद्ध परम्पराको विशेष कला हो।",
+   "en": "Thangka painting is a distinctive Buddhist art form."
+  },
+  {
+   "cat": 9,
+   "ne": "मोजार्टले पाँच वर्षको उमेरमै संगीत रचना गरे।",
+   "en": "Mozart composed music by the age of five."
+  },
+  {
+   "cat": 9,
+   "ne": "गिटारमा ६ वटा तार हुन्छन्, क्लासिकल गिटारमा नाइलनको।",
+   "en": "A classical guitar has six nylon strings."
+  },
+  {
+   "cat": 9,
+   "ne": "काठमाडौंको रानीपोखरी सन् १६७० मा बनाइएको थियो।",
+   "en": "Kathmandu's Rani Pokhari was built in the 1670s."
+  },
+  {
+   "cat": 9,
+   "ne": "स्वस्तिक प्राचीन भारतीय परम्परामा शुभ चिन्हको रूपमा प्रयोग हुन्थ्यो।",
+   "en": "The swastika is an ancient symbol of auspiciousness in South Asian traditions."
+  },
+  {
+   "cat": 9,
+   "ne": "गाइजु भाषामा लेखिएको लिपि नेपालकै स्थानीय हो।",
+   "en": "The Nepal Bhasa script is indigenous to Nepal."
+  },
+  {
+   "cat": 9,
+   "ne": "मण्डला कलाले ब्रह्माण्डको प्रतीकात्मक चित्रण गर्छ।",
+   "en": "Mandala art symbolically maps the universe."
+  },
+  {
+   "cat": 9,
+   "ne": "विश्वका ७,००० भन्दा बढी भाषा बोलिन्छन्।",
+   "en": "More than 7,000 languages are spoken worldwide."
+  },
+  {
+   "cat": 9,
+   "ne": "कथक नृत्य उत्तर भारतको शास्त्रीय परम्परा हो।",
+   "en": "Kathak is a classical dance tradition of North India."
+  },
+  {
+   "cat": 9,
+   "ne": "ताजमहल सेतो संगमरमरले बनेको छ र यसको निर्माण २२ वर्ष लाग्यो।",
+   "en": "The Taj Mahal is white marble and took about 22 years to build."
+  },
+  {
+   "cat": 9,
+   "ne": "बुद्धको मूर्तिकलामा मुद्रा र आसनको विशेष अर्थ हुन्छ।",
+   "en": "In Buddhist sculpture, hand gestures and postures carry specific meanings."
+  },
+  {
+   "cat": 9,
+   "ne": "नेपाली लोकगीत 'रेसम फिरिरी' हिमाली जीवनको चित्रण गर्छ।",
+   "en": "The folk song 'Resham Firiri' paints a picture of Himalayan life."
+  },
+  {
+   "cat": 9,
+   "ne": "पिकासोले आफ्नो जीवनमा हजारौं कलाकृति बनाए।",
+   "en": "Picasso produced thousands of artworks in his lifetime."
+  },
+  {
+   "cat": 9,
+   "ne": "मादल नेपालको लोकप्रिय तालवाद्य हो।",
+   "en": "The madal is a popular Nepali percussion instrument."
+  },
+  {
+   "cat": 9,
+   "ne": "जापानको हाइकु कविता तीन हरफमा सीमित हुन्छ।",
+   "en": "Japanese haiku poems are just three lines long."
+  },
+  {
+   "cat": 9,
+   "ne": "थिएटर शब्द ग्रीक 'थिएट्रोन' बाट आएको हो।",
+   "en": "The word 'theatre' comes from the Greek 'theatron'."
+  },
+  {
+   "cat": 9,
+   "ne": "नेपालको पञ्चेबाजा पाँच वाद्ययन्त्रको समूह हो।",
+   "en": "Nepal's Panche baja is an ensemble of five instruments."
+  },
+  {
+   "cat": 9,
+   "ne": "संगीत सुन्दा मस्तिष्कमा डोपामिन निस्कन्छ।",
+   "en": "Listening to music releases dopamine in the brain."
+  },
+  {
+   "cat": 9,
+   "ne": "मुगल वास्तुकलामा गुम्बज र मेहराबको प्रयोग विशेष छ।",
+   "en": "Domes and arches define Mughal architecture."
+  },
+  {
+   "cat": 9,
+   "ne": "नेपाली चित्रकलामा पौभा शैली प्रसिद्ध छ।",
+   "en": "Pauva painting is a celebrated Nepali style."
+  },
+  {
+   "cat": 9,
+   "ne": "विश्वका सबैभन्दा पुराना गुफा चित्र ४०,००० वर्ष पुराना छन्।",
+   "en": "Some of the oldest cave paintings are about 40,000 years old."
+  },
+  {
+   "cat": 9,
+   "ne": "सिनेमाको इतिहास सन् १८९५ मा लुमिएर भाइहरूबाट सुरु भयो।",
+   "en": "Cinema began with the Lumière brothers in 1895."
+  },
+  {
+   "cat": 9,
+   "ne": "नेपालको पहिलो चलचित्र 'सत्य हरिश्चन्द्र' सन् १९५१ मा बन्यो।",
+   "en": "Nepal's first film, Satya Harishchandra, was made in 1951."
+  },
+  {
+   "cat": 9,
+   "ne": "बाँसुरी विश्वका सबैभन्दा पुराना वाद्ययन्त्रमध्ये एक हो।",
+   "en": "The flute is one of the oldest musical instruments known."
+  },
+  {
+   "cat": 10,
+   "ne": "क्रिकेटमा एउटा ओभरमा ६ वटा बल फालिन्छ।",
+   "en": "A cricket over consists of six balls."
+  },
+  {
+   "cat": 10,
+   "ne": "ओलम्पिक खेल हरेक चार वर्षमा हुन्छ।",
+   "en": "The Olympic Games are held every four years."
+  },
+  {
+   "cat": 10,
+   "ne": "फुटबल विश्वकपको सुरुवात सन् १९३० मा भयो।",
+   "en": "The FIFA World Cup began in 1930."
+  },
+  {
+   "cat": 10,
+   "ne": "नेपालले सन् २००२ मा पहिलो पटक एसिया कप क्रिकेट खेल्यो।",
+   "en": "Nepal played its first Asia Cup cricket in 2002."
+  },
+  {
+   "cat": 10,
+   "ne": "म्याराथन दौड ४२.१९५ किलोमिटर लामो हुन्छ।",
+   "en": "A marathon is 42.195 km long."
+  },
+  {
+   "cat": 10,
+   "ne": "बास्केटबलमा एक टिममा कोर्टमा ५ खेलाडी हुन्छन्।",
+   "en": "A basketball team fields five players at a time."
+  },
+  {
+   "cat": 10,
+   "ne": "टेनिसमा 'लभ' को अर्थ शून्य हो।",
+   "en": "In tennis, 'love' means zero."
+  },
+  {
+   "cat": 10,
+   "ne": "सन् २०१६ मा नेपालले पहिलो पटक फिफा विश्वकप छनोटको दोस्रो चरण पुग्यो।",
+   "en": "In 2016 Nepal reached the second round of World Cup qualifiers for the first time."
+  },
+  {
+   "cat": 10,
+   "ne": "क्रिकेटको सबैभन्दा छोटो ढाँचा टी-१० हो, जुन नयाँ प्रयोग हो।",
+   "en": "T10 is the shortest professional cricket format."
+  },
+  {
+   "cat": 10,
+   "ne": "पौडी खेलमा फ्रीस्टाइल सबैभन्दा छिटो शैली हो।",
+   "en": "Freestyle is the fastest swimming stroke."
+  },
+  {
+   "cat": 10,
+   "ne": "नेपालका तेन्जिङ नोर्गे शेर्पा सगरमाथा आरोहण गर्ने पहिलो मानिसमध्ये एक हुन्।",
+   "en": "Tenzing Norgay Sherpa was one of the first to summit Everest."
+  },
+  {
+   "cat": 10,
+   "ne": "ओलम्पिकको पाँच रिंगले पाँच महादेशलाई प्रतिनिधित्व गर्छ।",
+   "en": "The five Olympic rings represent five continents."
+  },
+  {
+   "cat": 10,
+   "ne": "फुटबल खेलमा गोलकिपर मात्र हात प्रयोग गर्न पाउँछ।",
+   "en": "Only the goalkeeper may use their hands in football."
+  },
+  {
+   "cat": 10,
+   "ne": "क्रिकेटमा टेस्ट खेल ५ दिनसम्म चल्न सक्छ।",
+   "en": "A cricket Test match can last five days."
+  },
+  {
+   "cat": 10,
+   "ne": "नेपालको राष्ट्रिय खेल भलिबल हो।",
+   "en": "Volleyball is Nepal's national sport."
+  },
+  {
+   "cat": 10,
+   "ne": "ब्याडमिन्टनको सबैभन्दा छिटो सट ५०० किमी/घण्टाभन्दा बढी नापिएको छ।",
+   "en": "The fastest badminton smash has been measured above 500 km/h."
+  },
+  {
+   "cat": 10,
+   "ne": "नेपालमा समुद्र सतहबाट ३,००० मिटरभन्दा माथि पनि खेल मैदान छन्।",
+   "en": "Nepal hosts some of the world's highest-altitude sports grounds."
+  },
+  {
+   "cat": 10,
+   "ne": "नीरज चोपडाले ओलम्पिक एथ्लेटिक्समा भारतका लागि सुन जिते।",
+   "en": "Neeraj Chopra won Olympic gold for India in javelin."
+  },
+  {
+   "cat": 10,
+   "ne": "शतरञ्ज खेलको उत्पत्ति भारतमा भएको मानिन्छ।",
+   "en": "Chess is believed to have originated in India."
+  },
+  {
+   "cat": 10,
+   "ne": "कुस्ती ओलम्पिकको सबैभन्दा पुरानो खेलमध्ये एक हो।",
+   "en": "Wrestling is one of the oldest Olympic sports."
+  },
+  {
+   "cat": 10,
+   "ne": "नेपालले साफ खेलकुदमा धेरै पदक जित्छ।",
+   "en": "Nepal regularly wins medals at the South Asian Games."
+  },
+  {
+   "cat": 10,
+   "ne": "फुटबल मैदानको लम्बाइ १००–११० मिटर हुन्छ।",
+   "en": "A football pitch is 100 to 110 m long."
+  },
+  {
+   "cat": 10,
+   "ne": "क्रिकेटमा 'ह्याट्रिक' भन्ने तीन बलमा तीन विकेट लिनुलाई भनिन्छ।",
+   "en": "A hat-trick in cricket means three wickets in three balls."
+  },
+  {
+   "cat": 10,
+   "ne": "म्याराथनको नाम ग्रीक योद्धा फिडिपिडिसको कथाबाट आएको हो।",
+   "en": "The marathon's name traces to the legend of the messenger Pheidippides."
+  },
+  {
+   "cat": 10,
+   "ne": "नेपाली क्रिकेटर सन्दीप लामिछाने टी-२० मा पहिलो ह्याट्रिक लिनेमध्ये एक हुन्।",
+   "en": "Sandeep Lamichhane is one of Nepal's best-known cricketers."
+  },
+  {
+   "cat": 10,
+   "ne": "बास्केटबलको टोकरी ३.०५ मिटर उचाइमा हुन्छ।",
+   "en": "A basketball hoop stands 3.05 m high."
+  },
+  {
+   "cat": 10,
+   "ne": "एसियाड हरेक चार वर्षमा हुन्छ।",
+   "en": "The Asian Games take place every four years."
+  },
+  {
+   "cat": 10,
+   "ne": "साइक्लिङमा टुर डे फ्रान्स विश्वको सबैभन्दा प्रसिद्ध दौड हो।",
+   "en": "The Tour de France is cycling's most famous race."
+  },
+  {
+   "cat": 10,
+   "ne": "स्विमिङ र दौड सबैभन्दा धेरै ओलम्पिक पदक दिने खेल हुन्।",
+   "en": "Swimming and athletics award the most Olympic medals."
+  },
+  {
+   "cat": 10,
+   "ne": "कबड्डी दक्षिण एशियाको परम्परागत खेल हो।",
+   "en": "Kabaddi is a traditional sport of South Asia."
+  },
+  {
+   "cat": 11,
+   "ne": "दालभात नेपालीको दैनिक भोजनको मुख्य हिस्सा हो।",
+   "en": "Dal bhat is the staple meal of Nepal."
+  },
+  {
+   "cat": 11,
+   "ne": "मकै विश्वको सबैभन्दा धेरै उत्पादन हुने अन्नमध्ये एक हो।",
+   "en": "Maize is among the most widely grown grains on Earth."
+  },
+  {
+   "cat": 11,
+   "ne": "मोही चिसो पेयका रूपमा गर्मीमा लोकप्रिय छ।",
+   "en": "Mohi, a buttermilk drink, is popular in Nepali summers."
+  },
+  {
+   "cat": 11,
+   "ne": "कफी विश्वमा सबैभन्दा धेरै व्यापार हुने कृषि वस्तुमध्ये एक हो।",
+   "en": "Coffee is one of the most traded agricultural commodities."
+  },
+  {
+   "cat": 11,
+   "ne": "खुर्सानीमा भएको क्याप्साइसिनले पीडाको संवेदनशीलता घटाउँछ।",
+   "en": "Capsaicin in chillies can reduce pain sensitivity."
+  },
+  {
+   "cat": 11,
+   "ne": "चामल विश्वको आधा जनसंख्याको मुख्य खाना हो।",
+   "en": "Rice feeds about half the world's people."
+  },
+  {
+   "cat": 11,
+   "ne": "मह कहिल्यै बिग्रँदैन, पुरातात्विक स्थलमा पुरानो मह भेटिएको छ।",
+   "en": "Honey does not spoil; edible honey has been found in ancient tombs."
+  },
+  {
+   "cat": 11,
+   "ne": "दहीमा रहेको ब्याक्टेरियाले पेटको स्वास्थ्यमा मद्दत गर्छ।",
+   "en": "The bacteria in yoghurt support gut health."
+  },
+  {
+   "cat": 11,
+   "ne": "सेल रोटी तिहार र अन्य चाडपर्वमा बनाइन्छ।",
+   "en": "Sel roti is a festive Nepali rice bread."
+  },
+  {
+   "cat": 11,
+   "ne": "गुन्द्रुक सुकाइएको साग हो, जुन हिउँदमा खाइन्छ।",
+   "en": "Gundruk is fermented dried leafy greens, a winter staple."
+  },
+  {
+   "cat": 11,
+   "ne": "कागतीमा भिटामिन सी प्रचुर हुन्छ।",
+   "en": "Lemons are rich in vitamin C."
+  },
+  {
+   "cat": 11,
+   "ne": "चिया विश्वको सबैभन्दा धेरै पिइने पेयमध्ये एक हो।",
+   "en": "Tea is one of the most consumed drinks in the world."
+  },
+  {
+   "cat": 11,
+   "ne": "नुन बिना शरीरको तन्तुले काम गर्न सक्दैन।",
+   "en": "Your body cannot function without salt."
+  },
+  {
+   "cat": 11,
+   "ne": "मसला खानाको स्वाद र सुगन्ध दुवै बढाउँछ।",
+   "en": "Spices add both flavour and aroma to food."
+  },
+  {
+   "cat": 11,
+   "ne": "म:म: नेपालको सबैभन्दा लोकप्रिय स्ट्रिट फुडमध्ये एक हो।",
+   "en": "Momo dumplings are among Nepal's favourite street foods."
+  },
+  {
+   "cat": 11,
+   "ne": "दूधमा क्याल्सियम हुन्छ, जुन हड्डीका लागि आवश्यक छ।",
+   "en": "Milk provides calcium, essential for bones."
+  },
+  {
+   "cat": 11,
+   "ne": "चामल पकाउँदा पानी सोस्छ र तीन गुणा भारी हुन्छ।",
+   "en": "Rice absorbs water while cooking and can triple in weight."
+  },
+  {
+   "cat": 11,
+   "ne": "किम्ची कोरियाली परम्परागत अचार हो।",
+   "en": "Kimchi is Korea's traditional fermented vegetable dish."
+  },
+  {
+   "cat": 11,
+   "ne": "खाना चपाउँदा पाचन सजिलो हुन्छ।",
+   "en": "Chewing food well makes digestion easier."
+  },
+  {
+   "cat": 11,
+   "ne": "सागसब्जी रंगीन हुनुको कारण एन्टिअक्सिडेन्ट हो।",
+   "en": "The colours of vegetables come from antioxidant pigments."
+  },
+  {
+   "cat": 11,
+   "ne": "बदाममा स्वस्थ बोसो र प्रोटिन दुवै हुन्छ।",
+   "en": "Peanuts contain both healthy fats and protein."
+  },
+  {
+   "cat": 11,
+   "ne": "फलफूलको बोक्रामा धेरै पोषण हुन्छ।",
+   "en": "Fruit peels are often rich in nutrients."
+  },
+  {
+   "cat": 11,
+   "ne": "केराउको दाल प्रोटिनको राम्रो स्रोत हो।",
+   "en": "Lentils are a good source of protein."
+  },
+  {
+   "cat": 11,
+   "ne": "पानी कम पिउँदा टाउको दुख्न सक्छ।",
+   "en": "Drinking too little water can cause headaches."
+  },
+  {
+   "cat": 11,
+   "ne": "तोरीको तेल नेपालमा परम्परागत खाना पकाउने तेल हो।",
+   "en": "Mustard oil is a traditional cooking oil in Nepal."
+  },
+  {
+   "cat": 11,
+   "ne": "ब्रेड पुरानो हुँदै जाँदा स्टार्च क्रिस्टल बनेर कडा हुन्छ।",
+   "en": "Bread goes stale as its starch crystallises."
+  },
+  {
+   "cat": 11,
+   "ne": "आलु नयाँ महादेशबाट युरोप हुँदै एशियामा फैलियो।",
+   "en": "The potato spread from the Americas to Asia via Europe."
+  },
+  {
+   "cat": 11,
+   "ne": "महको स्वाद फुलको प्रकारअनुसार फरक हुन्छ।",
+   "en": "Honey's flavour depends on the flowers the bees visit."
+  },
+  {
+   "cat": 11,
+   "ne": "सुन्तला नेपालको पहाडी भेगमा व्यापक उमारिन्छ।",
+   "en": "Oranges grow widely in Nepal's mid-hills."
+  },
+  {
+   "cat": 11,
+   "ne": "भात जति पुरानो, खान पकाउन त्यति नै समय लाग्छ।",
+   "en": "Older rice usually takes longer to cook."
+  },
+  {
+   "cat": 12,
+   "ne": "नेपाली रुपैयाँ सन् १९३२ मा मुद्राको रूपमा चलनमा आयो।",
+   "en": "The Nepalese rupee has circulated as paper money since the 1930s."
+  },
+  {
+   "cat": 12,
+   "ne": "विश्वको सबैभन्दा ठूलो अर्थतन्त्र अमेरिका हो।",
+   "en": "The United States has the world's largest economy."
+  },
+  {
+   "cat": 12,
+   "ne": "बिटक्वाइन सन् २००९ मा सुरु भयो र यो पहिलो क्रिप्टोकरेन्सी हो।",
+   "en": "Bitcoin launched in 2009 as the first cryptocurrency."
+  },
+  {
+   "cat": 12,
+   "ne": "नेपालको अर्थतन्त्रमा पर्यटन र रेमिट्यान्स प्रमुख हुन्।",
+   "en": "Tourism and remittances are pillars of Nepal's economy."
+  },
+  {
+   "cat": 12,
+   "ne": "मुद्रास्फीति भनेको समयसँगै पैसाको क्रयशक्ति घट्नु हो।",
+   "en": "Inflation is the fall in money's purchasing power over time."
+  },
+  {
+   "cat": 12,
+   "ne": "स्टक बजारमा कम्पनीको सेयर खरिदबिक्री हुन्छ।",
+   "en": "Company shares are bought and sold on the stock market."
+  },
+  {
+   "cat": 12,
+   "ne": "विश्वको सबैभन्दा ठूलो मनोरञ्जन उद्योग भिडियो गेम हो।",
+   "en": "Video games are the world's largest entertainment industry by revenue."
+  },
+  {
+   "cat": 12,
+   "ne": "युट्युब सन् २००५ मा सुरु भयो।",
+   "en": "YouTube launched in 2005."
+  },
+  {
+   "cat": 12,
+   "ne": "हलिउडको सबैभन्दा धेरै कमाउने चलचित्र 'अवतार' हो।",
+   "en": "Avatar is the highest-grossing film of all time."
+  },
+  {
+   "cat": 12,
+   "ne": "विज्ञापन उद्योगले मानिसको ध्यान खिच्न मनोविज्ञान प्रयोग गर्छ।",
+   "en": "Advertising uses psychology to capture attention."
+  },
+  {
+   "cat": 12,
+   "ne": "नेपालमा सहकारी संस्था बचत र ऋणको लोकप्रिय माध्यम हुन्।",
+   "en": "Cooperatives are a popular form of saving in Nepal."
+  },
+  {
+   "cat": 12,
+   "ne": "क्रेडिट कार्ड भुक्तानी सन् १९५० को दशकमा लोकप्रिय बन्यो।",
+   "en": "Credit cards became popular in the 1950s."
+  },
+  {
+   "cat": 12,
+   "ne": "विश्वको पहिलो रेडियो प्रसारण सन् १९२० तिर भयो।",
+   "en": "The first commercial radio broadcasts began around 1920."
+  },
+  {
+   "cat": 12,
+   "ne": "सूचना अर्थतन्त्रमा डाटा नै कच्चा पदार्थ बन्छ।",
+   "en": "In the information economy, data is the raw material."
+  },
+  {
+   "cat": 12,
+   "ne": "सुन सदियौंदेखि मूल्य राख्ने सम्पत्ति मानिन्छ।",
+   "en": "Gold has been a store of value for centuries."
+  },
+  {
+   "cat": 12,
+   "ne": "नेपाल राष्ट्र बैंकले नेपालको मौद्रिक नीति तय गर्छ।",
+   "en": "Nepal Rastra Bank sets the country's monetary policy."
+  },
+  {
+   "cat": 12,
+   "ne": "नेटफ्लिक्सले सन् १९९७ मा डिभिडी भाडामा सुरु गरेको थियो।",
+   "en": "Netflix began in 1997 as a DVD rental service."
+  },
+  {
+   "cat": 12,
+   "ne": "विश्वमा रोजगारीको ठूलो हिस्सा साना व्यवसायले दिन्छन्।",
+   "en": "Small businesses provide most jobs worldwide."
+  },
+  {
+   "cat": 12,
+   "ne": "अनलाइन विज्ञापनले टेलिभिजनलाई उछिनेको छ।",
+   "en": "Online ads now outspend television ads."
+  },
+  {
+   "cat": 12,
+   "ne": "बचत गर्नु भनेको भविष्यका लागि आजको उपभोग घटाउनु हो।",
+   "en": "Saving means giving up some consumption today for the future."
+  },
+  {
+   "cat": 12,
+   "ne": "नेपालको मुद्रा भारतीय रुपैयाँसँग स्थिर विनिमय दरमा जोडिएको छ।",
+   "en": "Nepal's rupee is pegged to the Indian rupee."
+  },
+  {
+   "cat": 12,
+   "ne": "पेटेन्टले नयाँ आविष्कारको अधिकार सुरक्षित गर्छ।",
+   "en": "A patent protects the rights to a new invention."
+  },
+  {
+   "cat": 12,
+   "ne": "विश्वको सबैभन्दा ठूलो स्ट्रिमिङ बजारमा गीत र भिडियो दुवै छन्।",
+   "en": "Music and video both dominate streaming markets."
+  },
+  {
+   "cat": 12,
+   "ne": "सामाजिक सञ्जालले सूचना फैलाउने गतिलाई बदलिदियो।",
+   "en": "Social media changed the speed at which news spreads."
+  },
+  {
+   "cat": 12,
+   "ne": "सानो ब्याज दरले ठूलो फरक पार्छ — यसैले चक्रवृद्धि ब्याजलाई 'आठौं आश्चर्य' भनिन्छ।",
+   "en": "Compounding interest is often called the eighth wonder of the world."
+  },
+  {
+   "cat": 12,
+   "ne": "नेपालमा घरजग्गा र सेयर बजार लगानीका लोकप्रिय क्षेत्र हुन्।",
+   "en": "Real estate and shares are major investment areas in Nepal."
+  },
+  {
+   "cat": 12,
+   "ne": "पहिलो ई-कमर्स साइट सन् १९९४ मा सुरु भयो।",
+   "en": "The first online shopping sites appeared in 1994."
+  },
+  {
+   "cat": 12,
+   "ne": "विज्ञापनमा प्रयोग हुने 'फ्री' शब्दले मूल्य बढाउन सक्छ।",
+   "en": "The word 'free' in ads can actually raise perceived value."
+  },
+  {
+   "cat": 12,
+   "ne": "रेडियो नेपाल सन् १९५१ मा स्थापना भयो।",
+   "en": "Radio Nepal was established in 1951."
+  },
+  {
+   "cat": 12,
+   "ne": "पोडकास्ट शब्द 'आइपड' र 'ब्रडकास्ट' मिलेर बनेको हो।",
+   "en": "The word 'podcast' blends 'iPod' and 'broadcast'."
+  }
+ ]
+}
