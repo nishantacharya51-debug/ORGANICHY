@@ -1,0 +1,40 @@
+# Render blueprint — https://render.com/docs/blueprint-spec
+# One command: Render → New → Blueprint → pick this repo. It reads this file,
+# creates the web service, asks for the sync:false secrets and deploys.
+services:
+  - type: web
+    name: organichy
+    runtime: node
+    plan: starter            # free plan has an EPHEMERAL filesystem — see DEPLOY.md
+    region: singapore         # closest region to the customers; change if you prefer
+    rootDir: .
+    buildCommand: ""          # zero npm dependencies: nothing to install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20.11.1"
+      - key: SITE_URL
+        value: https://organichy.onrender.com   # replace with the real domain, then redeploy
+      - key: ADMIN_PASSWORD
+        sync: false          # prompted at deploy time; never stored in git
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: DATA_DIR
+        value: /var/data/organichy
+      - key: FREE_SHIPPING_THRESHOLD
+        value: "899"
+      - key: SHIPPING_FEE
+        value: "49"
+      - key: COD_FEE
+        value: "29"
+
+    # Render attaches this persistent volume to the Starter plan, which is how
+    # data/*.json (orders, reviews, coupons) survives a redeploy or a restart.
+    disk:
+      name: organichy-data
+      mountPath: /var/data/organichy
+      sizeGB: 1

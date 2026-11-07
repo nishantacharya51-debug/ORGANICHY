@@ -1,0 +1,24 @@
+# JSON datastore — auto-created and seeded on first boot.
+# Never commit real customer orders.
+data/
+
+# Local secrets
+.env
+.env.local
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Local artifacts
+*.log
+tmp/
+test/.data
+docs/screenshots/*.png

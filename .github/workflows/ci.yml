@@ -1,0 +1,40 @@
+name: ci
+# Boots the server with no npm install (the app has zero dependencies) and runs
+# the acceptance smoke tests: every page returns 200, the cart maths and the
+# admin login match the handoff pack.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Syntax check every source file
+        run: |
+          for f in server.js lib/*.js lib/views/*.js public/js/*.js test/*.js; do node --check "$f"; done
+          node -e "JSON.parse(require('fs').readFileSync('package.json'))"
+
+      - name: Run smoke tests (boots its own server)
+        env:
+          PORT: '3127'
+        run: npm test
+
+      - name: Static asset audit
+        run: |
+          node -e "
+          const fs=require('fs');
+          const need=['public/css/main.css','public/js/main.js','public/js/admin.js','public/js/boot.js','public/images/favicon.svg','render.yaml','Dockerfile','Procfile','DEPLOY.md','README.md'];
+          const missing=need.filter(f=>!fs.existsSync(f));
+          if (missing.length) { console.error('missing:', missing); process.exit(1); }
+          console.log('all', need.length, 'required files present');
+          "

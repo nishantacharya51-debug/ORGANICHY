@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ORGANICHY jar">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#149158"/>
+      <stop offset="1" stop-color="#0a4b30"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#g)"/>
+  <path d="M24 12h16v4H24z" fill="#e8f7ee"/>
+  <path d="M22 18h20l2.6 8v19a5 5 0 0 1-5 5H24.4a5 5 0 0 1-5-5V26z" fill="#f4fbf7"/>
+  <path d="M21 32h22v13a5 5 0 0 1-5 5H26a5 5 0 0 1-5-5z" fill="#c98a3e"/>
+  <path d="M19 30.5h26" stroke="#0f7a4d" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>
+  <g fill="#0f7a4d">
+    <circle cx="29" cy="40" r="2.6"/>
+    <circle cx="37" cy="44" r="2.1"/>
+    <circle cx="33" cy="36.5" r="1.5"/>
+  </g>
+  <path d="M44.5 16.5c.6 6.4-2.4 10.2-6.8 10.8" stroke="#8ee0b6" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+</svg>
