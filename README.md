@@ -117,3 +117,14 @@ Rebuild:
 
 Get everything as a zip from the player page (**Download all 12 reels**) or
 `/reels_zip` on the preview URL.
+
+### Voice pipeline status
+
+`R01_space_voiced.mp4` / `R02_science_voiced.mp4` — full voiceover reels (7 facts, hook + CTA).
+Shared `common_intro` / `common_outro` clips are reused across chapters; per-fact clips live in
+`out/audio/R<n>_f<i>.mp3`. The remaining chapters get their 7 fact clips the same way
+(`scripts/make_reels.py R3 --force` after dropping the mp3s in `out/audio/`).
+
+Note: `scripts/split_voice.py` (silence-split a long narration into per-fact clips) is
+experimental — comma pauses and clause pauses have the same length, so it is not reliable
+enough for unattended use.

@@ -108,13 +108,26 @@ def trim_silence(a, thresh=0.012, pad=0.06):
     return a[s:e]
 
 
-def build_timeline(reel, cat, facts, keys):
-    """Returns segments [(kind, text, dur, meta)] in play order."""
-    segs = []
-    segs.append(("intro", intro_line(reel, cat), None, {"vo": keys[0]}))
+SHARED = {"intro": "common_intro", "outro": "common_outro"}
+
+
+def pick_voice_key(kind, reel_id, idx, available):
+    """Prefer reel-specific clip, fall back to the shared intro/outro."""
+    cands = ([f"{reel_id}_{kind}"] if kind in ("intro", "outro") else [f"{reel_id}_f{idx}"])
+    if kind in SHARED:
+        cands.append(SHARED[kind])
+    for c in cands:
+        if c in available:
+            return c
+    return cands[0]
+
+
+def build_timeline(reel, cat, facts, available):
+    segs = [("intro", intro_line(reel, cat), None, {"vo": pick_voice_key("intro", reel["id"], 0, available)})]
     for i, f in enumerate(facts):
-        segs.append(("fact", fact_line(i, f, len(facts)), None, {"vo": keys[1 + i], "fact": f, "i": i}))
-    segs.append(("outro", outro_line(), None, {"vo": keys[-1]}))
+        segs.append(("fact", fact_line(i, f, len(facts)), None,
+                     {"vo": pick_voice_key("fact", reel["id"], i, available), "fact": f, "i": i}))
+    segs.append(("outro", outro_line(), None, {"vo": pick_voice_key("outro", reel["id"], 0, available)}))
     return segs
 
 
@@ -243,12 +256,16 @@ def main(ids):
         cat = cats[reel["cat"]]
         facts = pick_facts([f for f in data["facts"] if f["cat"] == cat["id"]])
         keys = [f"{reel['id']}_intro"] + [f"{reel['id']}_f{i}" for i in range(len(facts))] + [f"{reel['id']}_outro"]
-        segs = build_timeline(reel, cat, facts, keys)
-        missing = [k for k in keys if not os.path.exists(voice_path(k))]
+        # every generated clip (reel-specific + shared intro/outro) can be used
+        available = {f[:-4] for f in os.listdir(AUD) if f.endswith(".mp3")}
+        segs = build_timeline(reel, cat, facts, available)
+        missing = [s[3]["vo"] for s in segs if s[3]["vo"] not in available]
         print(reel["id"], "cat", cat["en"], "| missing voice:", len(missing), "/", len(keys), flush=True)
         if missing and "--force" not in sys.argv:
             print("  -> generate voice first:", ", ".join(missing[:3]), "...")
             continue
+        if missing:
+            print("  still missing:", missing)
         segs = list(measure_segments(segs))
         wav = os.path.join(OUT, f"{reel['id']}.wav")
         _, total = mix_audio(wav, segs, MOOD[cat["id"]])
