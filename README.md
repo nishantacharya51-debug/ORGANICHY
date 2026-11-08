@@ -128,3 +128,17 @@ Shared `common_intro` / `common_outro` clips are reused across chapters; per-fac
 Note: `scripts/split_voice.py` (silence-split a long narration into per-fact clips) is
 experimental — comma pauses and clause pauses have the same length, so it is not reliable
 enough for unattended use.
+
+
+### Motion engine (`scripts/motion.py`)
+
+Reels R01/R02 are rendered per-frame (no keyframe trick), so every frame really moves:
+
+* motif **rotates + bobs + beat-pulses** (126 BPM)
+* two parallax **particle layers scroll upward**
+* ambient glow **breathes** with the beat
+* **speed-light streaks** sweep across
+* fact card **slides up + fades in**, progress bar **fills live** per fact
+
+Cost: ~3.3 s of render per second of video (~0.06 s/frame at 1080x1920).
+`scripts/make_reels.py R2 --force` re-renders a reel with motion.

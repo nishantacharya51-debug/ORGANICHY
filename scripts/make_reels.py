@@ -15,6 +15,7 @@ import render as R
 import motifs as M
 import music as MUS
 import reel_lib as RL
+import motion as MO
 
 ROOT = R.ROOT
 W, H, FPS = R.W, R.H, 30
@@ -197,6 +198,61 @@ def ui_for(cat, fact_i, fact_n):
     return CARD_CACHE[key]
 
 
+def render_video_motion(out_path, audio_path, segs, reel, cat, facts):
+    """Per-frame animated render: rotating motif, particles, beat pulse, live HUD."""
+    cmd = [R.ffmpeg(), "-y", "-loglevel", "error",
+           "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+           "-i", audio_path,
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv420p",
+           "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart", out_path]
+    proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    pool = M.CAT_MOTIFS[cat["id"]]
+    t_global = 0.0
+    fact_i = 0
+    scenes = {}
+
+    def scene_for(key, motif, pattern, seed, fact=None, card=None):
+        if key not in scenes:
+            hue = (cat["hue"] + (abs(hash(key)) % 40) - 18) % 360
+            sc = MO.SceneAnim(fact or {}, cat, fact_i, hue, motif, pattern, seed)
+            sc.card = card
+            scenes[key] = sc
+        return scenes[key]
+
+    for kind, text, dur, meta, start in [(k, txt, d, m, 0) for k, txt, d, m in [(a[0], a[1], a[2], a[3]) for a in segs]]:
+        n = max(1, int(round(dur * FPS)))
+        beat = t_global / MO.BEAT
+        if kind == "fact":
+            fact, i = meta["fact"], meta["i"]
+            fact_i = i
+            card = card_for(fact, cat, i)
+            sc = scene_for(("fact", i), pool[i % len(pool)], (reel["pattern"][0] + i) % 8,
+                           2000 + i * 17, fact, card)
+        else:
+            sc = scene_for((kind,), pool[(fact_i + 1) % len(pool)], reel["pattern"][1],
+                           3000 + (2 if kind == "outro" else 1), None, None)
+            fact_i = -1
+        for f in range(n):
+            p = f / max(1, n - 1)
+            frame = MO.render_frame(sc, t_global, p, beat, min(1.0, p * 2.0),
+                                    len(facts), max(0, fact_i), cat, show_card=(kind == "fact"))
+            if kind != "fact":
+                ne = reel["title"] if kind == "intro" else "धन्यवाद · धेरै जान्नुहोस्"
+                en = reel["en"] if kind == "intro" else "LIKE · SHARE · FOLLOW"
+                frame = Image.alpha_composite(frame.convert("RGBA"),
+                                              RL.headline_overlay(ne, en, cat["hue"]))
+            frame = MO.draw_hud(frame, cat, max(0, fact_i) if kind == "fact" else 0,
+                                len(facts), p if kind == "fact" else 1.0)
+            proc.stdin.write(frame.convert("RGB").tobytes())
+            t_global += 1.0 / FPS
+        for _ in range(int(round(GAP * FPS))):
+            proc.stdin.write(frame.convert("RGB").tobytes())
+            t_global += 1.0 / FPS
+    proc.stdin.close()
+    proc.wait()
+    return out_path
+
+
 def render_video(out_path, audio_path, segs, reel, cat, facts):
     total = sum(s[2] for s in segs) + GAP * len(segs) + 0.6
     cmd = [R.ffmpeg(), "-y", "-loglevel", "error",
@@ -270,7 +326,7 @@ def main(ids):
         wav = os.path.join(OUT, f"{reel['id']}.wav")
         _, total = mix_audio(wav, segs, MOOD[cat["id"]])
         mp4 = os.path.join(OUT, f"{reel['id']}.mp4")
-        render_video(mp4, wav, segs, reel, cat, facts)
+        render_video_motion(mp4, wav, segs, reel, cat, facts)
         print(f"  done {mp4} {total:.1f}s", flush=True)
 
 

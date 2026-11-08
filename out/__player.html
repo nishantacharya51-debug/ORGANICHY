@@ -40,17 +40,18 @@
   <a class="dl" href="reels_zip" download="gk360_reels.zip">⬇ Download all 12 reels (zip)</a>
 </div>
 <script>
-const REELS=[["R01_space","अन्तरिक्ष","SPACE"],["R02_science","विज्ञान","SCIENCE"],
-["R03_earth","पृथ्वी","EARTH"],["R04_animals","जनावर","ANIMALS"],
-["R05_body","मानव शरीर","BODY"],["R06_history","इतिहास","HISTORY"],
-["R07_tech","प्रविधि","TECH"],["R08_nepal","नेपाल","NEPAL"],
-["R09_arts","कला","ARTS"],["R10_sports","खेलकुद","SPORTS"],
-["R11_food","खाना","FOOD"],["R12_money","अर्थ","MONEY"]];
+const REELS=[["R01_space_voiced","अन्तरिक्ष","SPACE","VOICE"],
+["R02_science_voiced","विज्ञान","SCIENCE","VOICE"],
+["R03_earth","पृथ्वी","EARTH",""],["R04_animals","जनावर","ANIMALS",""],
+["R05_body","मानव शरीर","BODY",""],["R06_history","इतिहास","HISTORY",""],
+["R07_tech","प्रविधि","TECH",""],["R08_nepal","नेपाल","NEPAL",""],
+["R09_arts","कला","ARTS",""],["R10_sports","खेलकुद","SPORTS",""],
+["R11_food","खाना","FOOD",""],["R12_money","अर्थ","MONEY",""]];
 const grid=document.getElementById('grid');
-REELS.forEach(([slug,ne,en])=>{
+REELS.forEach(([slug,ne,en,badge])=>{
   const a=document.createElement('a'); a.className='card'; a.href='reels/'+slug+'.mp4'; a.download=slug+'.mp4';
   a.innerHTML=`<video src="reels/${slug}.mp4#t=2" preload="metadata" muted playsinline></video>
-   <b>${ne}</b><span>${en} · 1:32 · download</span>`;
+   <b>${ne}${badge?' <em style="font-style:normal;color:#5b7bff">🎙</em>':''}</b><span>${en} · ${badge?'VOICE':'music'} · download</span>`;
   a.querySelector('video').style.cssText='width:100%;display:block;aspect-ratio:9/16;object-fit:cover;background:#111';
   a.onclick=e=>{ if(!e.target.download){ e.preventDefault(); v.src='reels/'+slug+'.mp4'; v.play(); window.scrollTo({top:0,behavior:'smooth'}); document.getElementById('dl').href='reels/'+slug+'.mp4'; document.getElementById('m').textContent=ne+' reel'; }} ;
   grid.appendChild(a);

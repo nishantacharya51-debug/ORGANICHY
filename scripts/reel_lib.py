@@ -133,3 +133,14 @@ def fact_card_overlay(fact, cat, idx_num):
         R.sh.draw_text(d, R.F_EN_R, ln, en_size, (44 + pad, y + en_size), fill=(255, 255, 255, 182), anchor="ls")
         y += en_lh
     return lay
+
+
+def headline_overlay(ne, en, hue):
+    """Big centred title used on intro / outro shots."""
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(lay)
+    d.rounded_rectangle([60, H * 0.545, W - 60, H * 0.75], radius=44, fill=(6, 8, 16, 190))
+    R.sh.draw_text(d, R.F_NE, ne, 86, (W / 2, H * 0.63), fill=(255, 255, 255, 252), anchor="ms")
+    R.sh.draw_text(d, R.F_EN_SB, en, 33, (W / 2, H * 0.685), fill=R.hsv(hue, 0.22, 1.0, 230), anchor="ms")
+    R.sh.draw_text(d, R.F_EN_SB, "GK 360", 27, (W / 2, H * 0.735), fill=(255, 255, 255, 130), anchor="ms")
+    return lay
